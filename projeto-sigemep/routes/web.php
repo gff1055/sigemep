@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', [
+    'as' => 'user.login',
+    'uses' => 'Controller@fazerLogin'
+]);
+
+Route::post('/login',[
+    'as' => 'user.login',
+    'uses' => 'Controller@fazerLogin'
+]);
