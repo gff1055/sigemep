@@ -21,6 +21,11 @@ Route::get('/login', [
 ]);
 
 Route::post('/login',[
-    'as' => 'user.login',
-    'uses' => 'Controller@fazerLogin'
+    'as' => 'dashboard.login',
+    'uses' => 'DashboardController@login'
+]);
+
+Route::get('/dashboard', [
+    'as' => 'dashboard.index',
+    'uses' => 'DashboardController@index',
 ]);

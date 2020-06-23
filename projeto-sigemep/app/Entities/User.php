@@ -22,7 +22,7 @@ class User extends Model implements Transformable
      */
     public $timestamps = true;
     protected $table = 'users';
-    protected $fillable = ['name','login','password','sexo','rua','bairro','num', 'compl', 'cep', 'estad', 'cidad', 'dataNasc', 'email','whatsapp','phone'];
+    protected $fillable = ['nome','usuario','senha','sexo','rua','bairro','num', 'compl', 'cep', 'estad', 'cidad', 'dataNasc', 'email','whatsapp','phone'];
     
 
 }

@@ -18,16 +18,16 @@ class CreateUsersTable extends Migration
 		Schema::create('users', function(Blueprint $table) {
 			$table->increments('id');
 			
-			$table->string("name", 50);
-			$table->string("login", 12)->unique();
-			$table->string("password", 18);
+			$table->string("nome", 50);
+			$table->string("usuario", 18)->unique();
+			$table->string("senha", 254);
 			$table->string("sexo", 18);
 			$table->string("rua", 18);
 			$table->string("bairro", 18);
 			$table->string("num", 6);
 			$table->string("compl", 18)->nullable();
 			$table->string("cep", 8);
-			$table->string("estad", 3);
+			$table->string("estad", 25);
 			$table->string("cidad", 18);
 			$table->date("dataNasc")->nullable();
 			
