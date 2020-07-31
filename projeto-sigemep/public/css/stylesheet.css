@@ -17,45 +17,179 @@ inl			1, 0, 0, 0
 	box-sizing: border-box;
 }
 
+/* body */
+body{
+	min-width: 550px
+}
+
+/* Body da pagina inicial */
+.bodyMainPage{
+	background-color: #333;
+}
+
+/* Menu do topo da pagina inicial */
+.topMenuBar{
+	background-color:  rgb(71, 100, 127);
+	color: #eeeeee;
+	display: flex;
+	align-items: center;
+	font-size: 16px;
+	font-family: verdana;
+}
+
+/* Logo ao lado do menu na pagina inicial */
+.topMenuBar .logo{
+	color: #eeeeee;
+	font-size: 32px;
+	margin-right: 16px;
+}
+
+/* Item do menu da pagina inicial */
+.itemTopMenuBar{
+	margin: 4px;
+	margin-right: 16px;
+
+}
+
+/* Links do menu */
+.itemTopMenuBar a{
+	color: #fff;
+	border-radius: 8px;
+	padding: 10px;
+}
+
+/* Links do menu ao passar o mouse */
+.itemTopMenuBar a:hover{
+	color: #fff;
+	text-decoration: none;
+	background-color: #58748f;
+	transition: .3s;
+}
+
+.beginning{
+	font-size: 2em;
+	color: #dddddd;
+	background-color: #333333;
+	margin: 8px;
+}
+
+/* Area de escolha de tipo de acesso */
+.chooseTypeAccess{
+	display: grid;
+	grid-template-columns: 50% 50%;
+	height: 80%;
+	margin: 8px;
+	
+}
+
+.typeAccess{
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	font-size: 2em;
+	background-color: rgba(0,0,0,0.5);
+	text-align: center;
+	background-size: cover;
+	transition-duration: 1s;
+	
+}
+
+.typeAccess:hover{
+	background-color: rgba(0,0,0,0);
+}
+
+.typeAccess a:link{
+	text-decoration: none;
+}
+
+#accessDoc{
+	background-image: url("/images/pb_wall.jpg");
+}
+
+#accessDoc:hover{
+	background-image: url("/images/wall.jpg");
+}
+
+#accessPat{
+	background-image: url("/images/pb_frontdesk.png");
+}
+
+#accessPat:hover{
+	background-image: url("/images/frontdesk.png");
+}
+
+.typeAccessClick{
+	background-color:  rgb(71, 100, 127);
+	padding: 16px;
+	border-radius: 16px;
+	color: #dddddd;
+}
+
+.typeAccessClick:hover{
+	background-color: rgb(112, 126, 139);
+	padding: 16px;
+	border-radius: 16px;
+	color: #dddddd;
+}
+
 .logo{
 	font-family: 'Lobster', cursive;
-	color: #477F6D;
+	color: rgb(71, 100, 127)/*#477F6D*/;
 }
+
+/* Estilo geral dos formularios */
 
 form{											/* Estilo geral dos formularios */
 	padding: 30px;
 	width: fit-content;
 	height: auto;
-	border-radius: 12px;
+	border-radius: 25px;
 }
 
 form .icone{
-	color: #477F6D;
+	color: rgb(71, 100, 127)/*#477F6D*/;
 }
 
 .atrForm{										/* Estilo geral dos atributos dos formularios */
 	font-size: 20px;
 	margin: 10px 0px 10px 0px;
-	border-radius: 6px;
+	border-radius: 25px;
 	padding: 10px;
 	width: 100%;
+	color: #333333;
 }
 
 form input[type="submit"]{
-	background-color: #5BA28B;
+	background-color: /*#5BA28B*/rgb(71, 100, 127);
 	font-weight: bold;
+	color: white;
 }
+
+form input[type="text"], form input[type="password"]{
+	text-shadow: 10px, 10px;
+	background-color: #dddddd;
+}
+
 
 form input[type="submit"]:hover{
-	background-color: #477F6D;
+	background-color: /*#477F6D*/rgb(112, 126, 139);
 }
 
-/*Configuracoes da area de login*/
+/*Configuracoes da area de login de medicos*/
 
-.bodyPaginaLogin{								/* Estilo do body da pagina de login */
+.bodyPaginaLoginDoctor{								/* Estilo do body da pagina de login */
 	background-image: url("/images/wall.jpg");
 	background-size: cover;
-	font-family: Verdana;	
+	font-family: Verdana, "sans-serif";	
+}
+
+/*Configuracoes da area de login do usuario*/
+
+.bodyPaginaLoginUser{								/* Estilo do body da pagina de login */
+	background-image: url("/images/frontdesk.png");
+	background-size: cover;
+	font-family: Verdana, "sans-serif";	
 }
 
 .divMaskBackgroundImage{
@@ -71,7 +205,7 @@ form input[type="submit"]:hover{
 }
 
 .formLogin{										/*Estilo do formulario de login*/
-	background-color: rgba(255,255,255,0.5);
+	background-color: #eeeeee;
 	margin-top: 1%;
 	width: 400px;
 	text-align: center;
@@ -85,6 +219,6 @@ form input[type="submit"]:hover{
 	width: 82%;
 }
 
-.formLogin .divBtEnviar input[type="submit"]{	/* Estilo do botao submit do formulario de login */
+.formLoginUser .divBtEnviar input[type="submit"]{	/* Estilo do botao submit do formulario de login */
 	width: 100%;
 }

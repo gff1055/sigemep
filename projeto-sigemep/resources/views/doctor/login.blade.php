@@ -6,7 +6,7 @@
 				<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 		<title></title>
 	</head>
-	<body class="bodyPaginaLoginUser">
+	<body class="bodyPaginaLoginDoctor">
 		<div class="divMaskBackgroundImage">
 		<section id="conteudo-view">
 			<div class="divFormLogin">

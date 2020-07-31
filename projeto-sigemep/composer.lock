@@ -1114,16 +1114,16 @@
         },
         {
             "name": "prettus/l5-repository",
-            "version": "2.6.42",
+            "version": "2.6.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/andersao/l5-repository.git",
-                "reference": "24c473c08ab46759a2ebe8bb1ec6de1d7c9e9d1e"
+                "reference": "5d5379a838d349447f1e09dcdc0426dfde3affb1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andersao/l5-repository/zipball/24c473c08ab46759a2ebe8bb1ec6de1d7c9e9d1e",
-                "reference": "24c473c08ab46759a2ebe8bb1ec6de1d7c9e9d1e",
+                "url": "https://api.github.com/repos/andersao/l5-repository/zipball/5d5379a838d349447f1e09dcdc0426dfde3affb1",
+                "reference": "5d5379a838d349447f1e09dcdc0426dfde3affb1",
                 "shasum": ""
             },
             "require": {
@@ -1176,7 +1176,7 @@
                 "model",
                 "repository"
             ],
-            "time": "2020-03-14T18:53:21+00:00"
+            "time": "2020-06-08T14:47:39+00:00"
         },
         {
             "name": "prettus/laravel-validation",

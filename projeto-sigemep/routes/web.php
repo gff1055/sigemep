@@ -15,17 +15,38 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [
-    'as' => 'user.login',
-    'uses' => 'Controller@fazerLogin'
+Route::get('/klinick',[
+    'as' => 'klinick.mainPage',
+    'uses' => 'Controller@mainPage'
 ]);
 
-Route::post('/login',[
+Route::get('/client/login', [
+    'as' => 'user.login',
+    'uses' => 'Controller@userLogin'
+]);
+
+Route::post('/client/login',[
     'as' => 'dashboard.login',
     'uses' => 'DashboardController@login'
 ]);
 
-Route::get('/dashboard', [
+Route::get('/client/dashboard', [
     'as' => 'dashboard.index',
     'uses' => 'DashboardController@index',
 ]);
+
+
+Route::get('/doctor/login', [
+    'as' => 'doctor.login',
+    'uses' => 'Controller@doctorLogin'
+]);
+
+/*Route::post('/doctor/login',[
+    'as' => 'dashboard.login',
+    'uses' => 'DashboardController@login'
+]);
+
+Route::get('/client/dashboard', [
+    'as' => 'dashboard.index',
+    'uses' => 'DashboardController@index',
+]);*/

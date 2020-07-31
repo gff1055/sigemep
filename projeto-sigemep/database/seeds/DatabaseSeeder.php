@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     public function run(){
         User::create([
             'nome' => 'Guilherme',
-            'usuario' => 'gff1055',
-            'senha' => bcrypt('souzag'),
+            'usuario' => 'gff105',
+            'senha' => env('SENHA_HASH')?bcrypt('souzag'):'souzag',
             'sexo' => 'Masculino',
             'rua' => 'Joao Mendes Leal',
             'bairro' => 'Vila Ipiranga',
