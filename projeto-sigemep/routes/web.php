@@ -20,14 +20,19 @@ Route::get('/klinick',[
     'uses' => 'Controller@mainPage'
 ]);
 
-Route::get('/client/login', [
+Route::get('/user/login', [
     'as' => 'user.login',
     'uses' => 'Controller@userLogin'
 ]);
 
-Route::post('/client/login',[
+Route::post('/user/login',[
     'as' => 'dashboard.login',
     'uses' => 'DashboardController@login'
+]);
+
+Route::get('/user/register',[
+    'as' => 'user.register',
+    'uses' => 'UserController@store'
 ]);
 
 Route::get('/client/dashboard', [

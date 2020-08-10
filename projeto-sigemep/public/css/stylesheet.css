@@ -29,7 +29,7 @@ body{
 
 /* Menu do topo da pagina inicial */
 .topMenuBar{
-	background-color:  rgb(71, 100, 127);
+	background-color:  #009900;
 	color: #eeeeee;
 	display: flex;
 	align-items: center;
@@ -62,7 +62,7 @@ body{
 .itemTopMenuBar a:hover{
 	color: #fff;
 	text-decoration: none;
-	background-color: #58748f;
+	background-color: #006600;
 	transition: .3s;
 }
 
@@ -120,14 +120,14 @@ body{
 }
 
 .typeAccessClick{
-	background-color:  rgb(71, 100, 127);
+	background-color:  #009900;
 	padding: 16px;
 	border-radius: 16px;
 	color: #dddddd;
 }
 
 .typeAccessClick:hover{
-	background-color: rgb(112, 126, 139);
+	background-color: #006600;
 	padding: 16px;
 	border-radius: 16px;
 	color: #dddddd;
@@ -135,7 +135,7 @@ body{
 
 .logo{
 	font-family: 'Lobster', cursive;
-	color: rgb(71, 100, 127)/*#477F6D*/;
+	color: #009900/*#477F6D*/;
 }
 
 /* Estilo geral dos formularios */
@@ -148,7 +148,7 @@ form{											/* Estilo geral dos formularios */
 }
 
 form .icone{
-	color: rgb(71, 100, 127)/*#477F6D*/;
+	color: #009900/*#477F6D*/;
 }
 
 .atrForm{										/* Estilo geral dos atributos dos formularios */
@@ -161,7 +161,7 @@ form .icone{
 }
 
 form input[type="submit"]{
-	background-color: /*#5BA28B*/rgb(71, 100, 127);
+	background-color: /*#5BA28B*/#009900;
 	font-weight: bold;
 	color: white;
 }
@@ -173,7 +173,7 @@ form input[type="text"], form input[type="password"]{
 
 
 form input[type="submit"]:hover{
-	background-color: /*#477F6D*/rgb(112, 126, 139);
+	background-color: /*#477F6D*/#006600;
 }
 
 /*Configuracoes da area de login de medicos*/

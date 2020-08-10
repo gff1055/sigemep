@@ -11,7 +11,7 @@ use Prettus\Repository\Traits\TransformableTrait;
  *
  * @package namespace App\Entities;
  */
-class Doctor extends Model implements Transformable
+class Doctor implements Authenticatable //extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -21,5 +21,6 @@ class Doctor extends Model implements Transformable
      * @var array
      */
     protected $fillable = [];
+
 
 }
