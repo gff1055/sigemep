@@ -27,28 +27,35 @@ class User extends Authenticatable //Model implements Transformable
      */
     public $timestamps = true;
     protected $table = 'users';
-    protected $fillable = ['nome','usuario','senha','sexo','rua','bairro','num','compl','cep','estad','cidad','dataNasc','email','whatsapp','phone'];
+    protected $fillable = ['name','username','password','email','sexo','dataNasc','phone'];
+    
 
-    public function carregaDados($pDados){
-        $this->nome = $pDados->nome;
-        $this->usuario = $pDados->usuario;
-        $this->senha = $pDados->senha;
-        $this->sexo = $pDados->sexo;
-        $this->rua = $pDados->rua;
-        $this->bairro = $pDados->bairro;
-        $this->num = $pDados->num;
-        $this->compl = $pDados->compl;
-        $this->cep = $pDados->cep;
-        $this->estad = $pDados->estad;
-        $this->cidad = $pDados->cidad;
-        $this->dataNasc = $pDados->dataNasc;
+    public function loadDataLogin($pDados){
+        $this->name = $pDados->name;
+        $this->username = $pDados->username;
+        $this->password = $pDados->password;
         $this->email = $pDados->email;
-        $this->whatsapp = $pDados->whatsapp;
-        $this->phone = $pDados->phone;
     }
 
 
     public function setSenhaAttribute($pSenha){
         $this->attributes['senha'] = env('SENHA_HASH') ? bcrypt($pSenha) : $pSenha;
     }
+
+    /*
+		nome - 		input text
+		login - 	--
+		password - 	password
+		email -		input text
+		sexo -		combobox
+		*rua -		input text
+		*bairro -	--
+		*num -		--
+		*compl - 	--
+		*estad -		--
+		*cidad -		--
+		*dataNasc -	--
+		whatsapp -	--
+        phone -		--
+    */
 }

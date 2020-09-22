@@ -19,12 +19,12 @@ class DashboardController extends Controller{
         $this->validador = $validador;
     }
 
-    public function index(){
+    public function authUser(){
         echo ("EEEEEEEBBBAAA");
     }
 
 
-    public function login(Request $dadosLogin){
+    /*public function login(Request $dadosLogin){
         
         $dadosAut = [
             'usuario' => $dadosLogin->get('usuario'),
@@ -54,7 +54,7 @@ class DashboardController extends Controller{
                 /*$t = get_class($usuario);
                 dd($t);*/
             
-                if(!$usuario)
+    /*            if(!$usuario)
                     throw new Exception("Email/Login invalido");
                 if($usuario->senha != $dadosLogin->get('senha'))
                     throw new Exception("Senha invalida");
@@ -70,5 +70,5 @@ class DashboardController extends Controller{
         catch(Exception $e){
             return $e->getMessage();
         }
-    }
+    }*/
 }

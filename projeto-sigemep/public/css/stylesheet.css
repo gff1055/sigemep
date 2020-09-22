@@ -17,17 +17,23 @@ inl			1, 0, 0, 0
 	box-sizing: border-box;
 }
 
+
 /* body */
+
 body{
 	min-width: 550px
 }
 
+
 /* Body da pagina inicial */
+
 .bodyMainPage{
 	background-color: #333;
 }
 
+
 /* Menu do topo da pagina inicial */
+
 .topMenuBar{
 	background-color:  #009900;
 	color: #eeeeee;
@@ -37,28 +43,36 @@ body{
 	font-family: verdana;
 }
 
+
 /* Logo ao lado do menu na pagina inicial */
+
 .topMenuBar .logo{
 	color: #eeeeee;
 	font-size: 32px;
 	margin-right: 16px;
 }
 
+
 /* Item do menu da pagina inicial */
+
 .itemTopMenuBar{
 	margin: 4px;
 	margin-right: 16px;
 
 }
 
+
 /* Links do menu */
+
 .itemTopMenuBar a{
 	color: #fff;
 	border-radius: 8px;
 	padding: 10px;
 }
 
+
 /* Links do menu ao passar o mouse */
+
 .itemTopMenuBar a:hover{
 	color: #fff;
 	text-decoration: none;
@@ -73,7 +87,9 @@ body{
 	margin: 8px;
 }
 
+
 /* Area de escolha de tipo de acesso */
+
 .chooseTypeAccess{
 	display: grid;
 	grid-template-columns: 50% 50%;
@@ -138,6 +154,7 @@ body{
 	color: #009900/*#477F6D*/;
 }
 
+
 /* Estilo geral dos formularios */
 
 form{											/* Estilo geral dos formularios */
@@ -147,6 +164,10 @@ form{											/* Estilo geral dos formularios */
 	border-radius: 25px;
 }
 
+form .logo{
+	font-size: 48px;
+}
+
 form .icone{
 	color: #009900/*#477F6D*/;
 }
@@ -154,10 +175,14 @@ form .icone{
 .atrForm{										/* Estilo geral dos atributos dos formularios */
 	font-size: 20px;
 	margin: 10px 0px 10px 0px;
-	border-radius: 25px;
+	border-radius: 0px;
 	padding: 10px;
 	width: 100%;
 	color: #333333;
+}
+
+.atrSizeHalf{
+	width: 49.5%;
 }
 
 form input[type="submit"]{
@@ -176,6 +201,7 @@ form input[type="submit"]:hover{
 	background-color: /*#477F6D*/#006600;
 }
 
+
 /*Configuracoes da area de login de medicos*/
 
 .bodyPaginaLoginDoctor{								/* Estilo do body da pagina de login */
@@ -183,6 +209,7 @@ form input[type="submit"]:hover{
 	background-size: cover;
 	font-family: Verdana, "sans-serif";	
 }
+
 
 /*Configuracoes da area de login do usuario*/
 
@@ -211,14 +238,17 @@ form input[type="submit"]:hover{
 	text-align: center;
 }
 
-.formLogin .logo{
-	font-size: 48px;
-}
-
 .formLogin .atrForm{
 	width: 82%;
 }
 
 .formLoginUser .divBtEnviar input[type="submit"]{	/* Estilo do botao submit do formulario de login */
 	width: 100%;
+}
+
+
+/* Configuracoes do formulario de cadastro de nova conta*/
+
+.formUserRegisterTitle{
+	text-align: center;
 }

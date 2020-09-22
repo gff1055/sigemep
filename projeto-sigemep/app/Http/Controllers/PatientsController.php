@@ -7,114 +7,80 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\UserCreateRequest;
-use App\Http\Requests\UserUpdateRequest;
-use App\Repositories\UserRepository;
-use App\Validators\UserValidator;
-use App\Entities\User;
-use Illuminate\Support\Facades\DB;
-use Auth;
-use Exception;
+use App\Http\Requests\PatientCreateRequest;
+use App\Http\Requests\PatientUpdateRequest;
+use App\Repositories\PatientRepository;
+use App\Validators\PatientValidator;
 
 /**
- * Class UsersController.
+ * Class PatientsController.
  *
  * @package namespace App\Http\Controllers;
  */
-class UsersController extends Controller
+class PatientsController extends Controller
 {
     /**
-     * @var UserRepository
+     * @var PatientRepository
      */
     protected $repository;
 
     /**
-     * @var UserValidator
+     * @var PatientValidator
      */
     protected $validator;
 
-    public function __construct(UserRepository $repository, UserValidator $validator){
+    /**
+     * PatientsController constructor.
+     *
+     * @param PatientRepository $repository
+     * @param PatientValidator $validator
+     */
+    public function __construct(PatientRepository $repository, PatientValidator $validator)
+    {
         $this->repository = $repository;
         $this->validator  = $validator;
     }
 
-    public function login(Request $dadosLogin){
-
-        // recebendo dados de autenticacao
-        $dadosAut = [
-            'username' => $dadosLogin->get('username'),
-            'password' => $dadosLogin->get('password')
-        ];
-
-        // Efetuando login
-        try{
-            // A criptografia de senha esta habilitada?
-            if(env('SENHA_HASH')){
-                Auth::attempt($dadosAut, false);
-            }
-
-            // A criptografia de senha nao esta habilitada
-            else{
-                $user = new User();
-                $user->loadDataLogin(DB::select('select * from users where username = ? or email = ?', [$dadosLogin->get('username'), $dadosLogin->get('username')])[0]);
-                
-                // Usuario nao existe?
-                if(!$user)
-                    throw new Exception("Email/Login invalido");
-
-                // A senha do usuario esta correta?
-                if($user->password != $dadosLogin->get('password'))
-                    throw new Exception("Senha invalida");
-
-                Auth::login($user);
-            }
-            return redirect()->route('user.index');
-        }
-        
-        catch(Exception $e){
-            return $e->getMessage();
-        }
-    }
-    
-    public function register(){
-       return view('user.register');
-    }
-
-    public function index(){
-        echo ("EEEEEEEBBBAAA");
-        /*$this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
-        $users = $this->repository->all();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        $patients = $this->repository->all();
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $users,
+                'data' => $patients,
             ]);
         }
 
-        return view('users.index', compact('users'));*/
+        return view('patients.index', compact('patients'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  UserCreateRequest $request
+     * @param  PatientCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(UserCreateRequest $request)
+    public function store(PatientCreateRequest $request)
     {
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
 
-            $user = $this->repository->create($request->all());
+            $patient = $this->repository->create($request->all());
 
             $response = [
-                'message' => 'User created.',
-                'data'    => $user->toArray(),
+                'message' => 'Patient created.',
+                'data'    => $patient->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -144,16 +110,16 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = $this->repository->find($id);
+        $patient = $this->repository->find($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $user,
+                'data' => $patient,
             ]);
         }
 
-        return view('users.show', compact('user'));
+        return view('patients.show', compact('patient'));
     }
 
     /**
@@ -165,32 +131,32 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = $this->repository->find($id);
+        $patient = $this->repository->find($id);
 
-        return view('users.edit', compact('user'));
+        return view('patients.edit', compact('patient'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  UserUpdateRequest $request
+     * @param  PatientUpdateRequest $request
      * @param  string            $id
      *
      * @return Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(UserUpdateRequest $request, $id)
+    public function update(PatientUpdateRequest $request, $id)
     {
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
 
-            $user = $this->repository->update($request->all(), $id);
+            $patient = $this->repository->update($request->all(), $id);
 
             $response = [
-                'message' => 'User updated.',
-                'data'    => $user->toArray(),
+                'message' => 'Patient updated.',
+                'data'    => $patient->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -228,11 +194,11 @@ class UsersController extends Controller
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => 'User deleted.',
+                'message' => 'Patient deleted.',
                 'deleted' => $deleted,
             ]);
         }
 
-        return redirect()->back()->with('message', 'User deleted.');
+        return redirect()->back()->with('message', 'Patient deleted.');
     }
 }

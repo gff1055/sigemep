@@ -17,9 +17,8 @@ class CreateDoctorsTable extends Migration
 	{
 		Schema::create('doctors', function(Blueprint $table) {
 			$table->increments('id');
-			$table->string('name', 100);
-			$table->string('login', 20)->unique();
-			$table->string('password', 15)->unique();
+
+			$table->unsignedInteger('user_id');
 			$table->string('numReg', 15);
 			$table->string('photo', 200);
 			$table->string('typePayment', 20);
