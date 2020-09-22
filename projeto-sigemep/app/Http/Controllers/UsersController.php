@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
+//use Prettus\Validator\Contracts\ValidatorInterface;
+//use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
 use App\Entities\User;
+use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use Exception;
@@ -31,11 +32,13 @@ class UsersController extends Controller
     /**
      * @var UserValidator
      */
-    protected $validator;
+    //protected $validator;
+    protected $service;
 
-    public function __construct(UserRepository $repository, UserValidator $validator){
+    public function __construct(UserRepository $repository, UserService $service){
         $this->repository = $repository;
-        $this->validator  = $validator;
+        $this->service = $service;
+        //$this->validator  = $validator;
     }
 
     public function login(Request $dadosLogin){
@@ -106,7 +109,18 @@ class UsersController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        try {
+        $request = $this->service->store($request->all());
+        
+        if($request['success']){
+            $user = $request['data'];
+        }
+        else{
+            $user = null;
+        }
+
+        return view('user.index');
+
+        /*try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
 
@@ -132,7 +146,7 @@ class UsersController extends Controller
             }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
+        }*/
     }
 
     /**

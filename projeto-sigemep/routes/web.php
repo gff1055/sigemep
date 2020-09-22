@@ -31,20 +31,22 @@ Route::post('/login',[
     'uses' => 'UsersController@login'
 ]);
 
-Route::get('/user', [
+/*Route::get('/user', [
     'as' => 'user.index',
     'uses' => 'UsersController@index',
-]);
+]);*/
 
 Route::get('/register',[
     'as' => 'user.register_get',
     'uses' => 'UsersController@register'
 ]);
 
-Route::post('/userStore', [
+Route::resource('user', 'UsersController');
+
+/*Route::post('/userStore', [
     'as' => 'user.store',
     'uses' => 'UsersController@store'
-]);
+]);*/
 
 /*Route::get('/client/dashboard', [
     'as' => 'dashboard.index',
