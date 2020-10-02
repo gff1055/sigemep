@@ -24,7 +24,6 @@ class UserValidator extends LaravelValidator
             'password' => 'required',
             'email' => 'required',
             'sexo' => 'required',
-            'dataNasc' => 'required',
             'phone' => 'required'
         ],
         

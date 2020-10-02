@@ -37,15 +37,17 @@
 							'placeholder' => 'Senha'
 						]) !!}
 
-						<br><br>
-						Não tem uma conta? <a href="{{ route('user.register_get') }}">Crie uma</a>
-						<br><br>
-
 						<div class="divBtEnviar">
 							{!! Form::submit('Entrar', [
 								'class' => 'atrForm',
 							]) !!}
 						</div>
+
+						<a href="#">Esqueceu a senha?</a>
+
+						<hr>
+						
+						Não tem uma conta? <a href="{{ route('user.register_get') }}">Crie uma</a>
 
 					{!! Form::close() !!}
 				</div>

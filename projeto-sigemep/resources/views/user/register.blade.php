@@ -14,12 +14,14 @@
 		])
 	!!}
 
-	<hr>
-	<div class="formUserRegisterTitle"> <span class="logo">KliNicK</span>
+	
+	<div class="formUserRegisterTitle">
+		<span class="logo">KliNicK</span>
 		<br>
 		Crie sua conta e faça consultas com medicos on-line de varias especialidades
+		<br>
 	</div>
-	<hr>
+	<br>	
 
 		{!! Form::text('name', null, [
 			'class'=>'atrForm',
@@ -32,12 +34,12 @@
 		]) !!}
 
 		{!! Form::password('password', [
-			'class'=>'atrForm atrSizeHalf',
+			'class'=>'atrForm atrFormSizeHalf',
 			'placeholder'=>'Senha'
 		]) !!}
 
-		{!! Form::password('password', [
-			'class'=>'atrForm atrSizeHalf',
+		{!! Form::password('checkPassword', [
+			'class'=>'atrForm atrFormSizeHalf',
 			'placeholder'=>'Confirmar senha'
 		]) !!}
 
@@ -46,18 +48,17 @@
 			'placeholder'=>'Email'
 		]) !!}
 
-		{!!
-		Form::Label('sexo', 'Sexo: ')!!}
+		{!! Form::text('dataNasc', null, [
+			'class'=>'atrForm atrFormSizeHalf',
+			'placeholder'=>'Data de Nascimento'
+		]) !!}
+
+		{!!Form::Label('sexo', 'Sexo: ')!!}
 		{!! Form::select('sexo', array(
 			'masculino' => 'Masculino',
 			'feminino' => 'Feminino'
 		),[
 			'class'=>'atrForm',
-		]) !!}
-
-		{!! Form::text('dataNasc', null, [
-			'class'=>'atrForm',
-			'placeholder'=>'Data de Nascimento'
 		]) !!}
 
 		{!! Form::text('phone', null, [
@@ -92,4 +93,5 @@
 	-->	
 
 	{!!Form::close()!!}
+	<script src="{{asset('js/script.css')}}"></script>
 @endsection

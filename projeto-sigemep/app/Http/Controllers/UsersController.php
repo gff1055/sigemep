@@ -72,6 +72,7 @@ class UsersController extends Controller
                 Auth::login($user);
             }
             return redirect()->route('user.index');
+            
         }
         
         catch(Exception $e){
@@ -109,7 +110,9 @@ class UsersController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
+        //dd($request->all());
         $request = $this->service->store($request->all());
+
         
         if($request['success']){
             $user = $request['data'];
@@ -118,7 +121,9 @@ class UsersController extends Controller
             $user = null;
         }
 
-        return view('user.index');
+        return view('user.index',[
+            'user' => $user
+        ]);
 
         /*try {
 

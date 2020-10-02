@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
+use Prettus\Validator\Contracts\ValidatorInterface;
 
 class UserService{
 	private $repository;
@@ -16,13 +17,13 @@ class UserService{
 
 	public function store($data){
 		try{
-			$this->validator->with($data)->passesOrFail(Validator_Interface::RULE_CREATE);
+			$this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 			$user = $this->repository->create($data);
 
 			return[
 				'success' => 'true',
 				'message' => 'Usuario Cadastrado',
-				'data' => $usuario
+				'data' => $user
 			];
 		}
 		catch(Exception $except){
