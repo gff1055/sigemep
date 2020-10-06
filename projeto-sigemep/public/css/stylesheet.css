@@ -119,22 +119,6 @@ body{
 	text-decoration: none;
 }
 
-/*#accessDoc{
-	background-image: url("/images/pb_wall.jpg");
-}
-
-#accessDoc:hover{
-	background-image: url("/images/wall.jpg");
-}
-
-#accessPat{
-	background-image: url("/images/pb_frontdesk.png");
-}
-
-#accessPat:hover{
-	background-image: url("/images/frontdesk.png");
-}*/
-
 .typeAccessClick{
 	background-color:  #009900;
 	padding: 16px;
@@ -185,11 +169,19 @@ form .icone{
 	width: 49.5%;
 }
 
+form .divBtEnviar{
+	text-align: center;
+}
+
 form input[type="submit"]{
 	background-color: /*#5BA28B*/#009900;
 	font-weight: bold;
 	color: white;
 	margin-top: 32px;
+}
+
+form .divBtEnviar input[type="submit"]{	/* Estilo do botao submit do formulario de login */
+	width: 50%;
 }
 
 form input[type="text"], form input[type="password"]{
@@ -200,6 +192,14 @@ form input[type="text"], form input[type="password"]{
 
 form input[type="submit"]:hover{
 	background-color: /*#477F6D*/#006600;
+}
+
+form input[disabled]{
+	background-color: /*#477F6D*/#888888;
+}
+
+form input[disabled]:hover{
+	background-color: /*#477F6D*/#888888;
 }
 
 
@@ -243,9 +243,7 @@ form input[type="submit"]:hover{
 	width: 82%;
 }
 
-.formLogin .divBtEnviar  input[type="submit"]{	/* Estilo do botao submit do formulario de login */
-	width: 100%;
-}
+
 
 
 /* Configuracoes do formulario de cadastro de nova conta*/

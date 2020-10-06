@@ -32,14 +32,17 @@
 			'class'=>'atrForm',
 			'placeholder'=>'Usuario'
 		]) !!}
-
+		<span id="passwordWarning"></span>
+		
 		{!! Form::password('password', [
 			'class'=>'atrForm atrFormSizeHalf',
+			'id' => 'password',
 			'placeholder'=>'Senha'
 		]) !!}
 
 		{!! Form::password('checkPassword', [
 			'class'=>'atrForm atrFormSizeHalf',
+			'id' => 'checkPassword',
 			'placeholder'=>'Confirmar senha'
 		]) !!}
 
@@ -66,10 +69,13 @@
 			'placeholder'=>'Fone'
 		]) !!}
 
+		<div class="divBtEnviar">
 		{!!Form::submit('Criar conta',[
-			'class' => 'atrForm'
+			'class' => 'atrForm',
+			'id' => 'submitUserRegister'
 		])
 			!!}
+		</div>
 		<br>
 		<div class="formUserRegisterTitle">Ao me cadastrar eu concordo com os <a href="">termos e usos</a> da KliNick Serviços Medicos</div>
 		<br>
@@ -93,5 +99,5 @@
 	-->	
 
 	{!!Form::close()!!}
-	<script src="{{asset('js/script.css')}}"></script>
+	<script src="{{asset('js/checkFormRegister.js')}}"></script>
 @endsection
