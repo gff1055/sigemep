@@ -90,15 +90,15 @@ body{
 
 /* Area de escolha de tipo de acesso */
 
-.chooseTypeAccess{
+/*.chooseTypeAccess{
 	display: grid;
 	grid-template-columns: 50% 50%;
 	height: 80%;
 	margin: 8px;
 	
-}
+}*/
 
-.typeAccess{
+/*.typeAccess{
 	display: flex;
 	width: 100%;
 	align-items: center;
@@ -109,9 +109,9 @@ body{
 	background-size: cover;
 	transition-duration: 1s;
 	
-}
+}*/
 
-.typeAccess:hover{
+/*.typeAccess:hover{
 	background-color: rgba(0,0,0,0);
 }
 
@@ -131,7 +131,7 @@ body{
 	padding: 16px;
 	border-radius: 16px;
 	color: #dddddd;
-}
+}*/
 
 .logo{
 	font-family: 'Lobster', cursive;
@@ -205,11 +205,11 @@ form input[disabled]:hover{
 
 /*Configuracoes da area de login de medicos*/
 
-.bodyPaginaLoginDoctor{								/* Estilo do body da pagina de login */
-	background-image: url("/images/wall.jpg");
+/*.bodyPaginaLoginDoctor{								/* Estilo do body da pagina de login */
+/*	background-image: url("/images/wall.jpg");
 	background-size: cover;
 	font-family: Verdana, "sans-serif";	
-}
+}*/
 
 
 /*Configuracoes da area de login do usuario*/
@@ -244,10 +244,18 @@ form input[disabled]:hover{
 }
 
 
+/*CONFIGURACOES DA PAGINA DE CADASTRO DE NOVOS USUARIO*/
 
+/*Div do formulario da pagina*/
+.divUserRegisterForm{
+	
+}
 
-/* Configuracoes do formulario de cadastro de nova conta*/
+.divUserRegisterForm form{
+	width: 100%;
+}
 
+/*Titulo do formulario*/
 .formUserRegisterTitle{
 	text-align: center;
 }

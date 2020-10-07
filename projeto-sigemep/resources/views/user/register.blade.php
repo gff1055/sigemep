@@ -7,7 +7,7 @@
 	<div class="itemTopMenuBar"><a href="#">Ajuda</a></div>
 	<div class="itemTopMenuBar"><a href="#">Contato</a></div>
 </section>
-
+	<div class="divUserRegisterForm">
 	{!! Form::open([
 		'route' => 'user.store',
 		'class' => 'formUserRegister'
@@ -100,4 +100,5 @@
 
 	{!!Form::close()!!}
 	<script src="{{asset('js/checkFormRegister.js')}}"></script>
+	</div>
 @endsection

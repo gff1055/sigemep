@@ -17,11 +17,11 @@ checkPassword.addEventListener("keyup", function(){
 },false);
 
 password.addEventListener("keyup", function(){
-	if(passwordFieldSame(password.value, checkPassword.value)){
+	if(passwordFieldSame(password.value, checkPassword.value) == 1){
 		submitUserRegister.disabled = false;
 		passwordWarning.innerHTML = "";
 	}
-	else{
+	else if(passwordFieldSame(password.value, checkPassword.value) == -1){
 		submitUserRegister.disabled = true;
 		passwordWarning.style.color = "#ff0000";
 		passwordWarning.innerHTML = "<br>*As senhas nao coincidem ou nao foram preenchidas<br>";
@@ -29,11 +29,21 @@ password.addEventListener("keyup", function(){
 },false);
 
 passwordFieldSame = function(d1, d2){
-	if(d1 == d2 && d1 != ""){
-		return true;
+	var rtrnValue;
+	if(d1 == d2){
+	
+		if(d1 != ""){
+			rtrnValue = 1;
+		}
+		
+		else{
+			rtrnValue = 0;
+		}
+	
 	}
 	else{
-		return false;
+		rtrnValue = -1;
 	}
+	return rtrnValue;
 }
 
