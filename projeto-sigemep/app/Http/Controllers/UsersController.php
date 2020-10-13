@@ -60,6 +60,8 @@ class UsersController extends Controller
             else{
                 $user = new User();
                 $user->loadDataLogin(DB::select('select * from users where username = ? or email = ?', [$dadosLogin->get('username'), $dadosLogin->get('username')])[0]);
+
+                
                 
                 // Usuario nao existe?
                 if(!$user)
@@ -68,8 +70,12 @@ class UsersController extends Controller
                 // A senha do usuario esta correta?
                 if($user->password != $dadosLogin->get('password'))
                     throw new Exception("Senha invalida");
+                
+                
 
                 Auth::login($user);
+
+                
             }
             return redirect()->route('user.index');
             
