@@ -7,16 +7,16 @@
 			<section id="conteudo-view">
 				<div class="divFormLogin">
 					{!!Form::open([
-						'route'=>'user.login_post',
-						'method'=>'post',
+						/*'route'=>'user.login_post',
+						'method'=>'post',*/
 						'class' => 'formLogin'
 					])!!}
 
 						<span class="logo">KliNicK</span>
 						<br>
 						Fazer Login
-						<br><br>
-
+						<br>
+						<br>
 						<svg class="bi bi-person-fill icone" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 						</svg>
@@ -34,6 +34,7 @@
 							'class' => 'atrForm',
 							'placeholder' => 'Senha'
 						]) !!}
+						<div class="d-none" id="feedbackLogin">Mensagem de erro</div>
 
 						<div class="divBtEnviar">
 							{!! Form::submit('Entrar', [
@@ -51,5 +52,9 @@
 				</div>
 			</section>
 		</div>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+		<script src="{{asset('js/validateLogin.js')}}"></script>	
 	</body>
+	
 @endsection

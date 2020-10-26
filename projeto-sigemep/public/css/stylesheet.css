@@ -25,15 +25,7 @@ body{
 }
 
 
-/* Body da pagina inicial */
-
-.bodyMainPage{
-	background-color: #333;
-}
-
-
 /* Menu do topo da pagina inicial */
-
 .topMenuBar{
 	background-color:  #009900;
 	color: #eeeeee;
@@ -45,7 +37,6 @@ body{
 
 
 /* Logo ao lado do menu na pagina inicial */
-
 .topMenuBar .logo{
 	color: #eeeeee;
 	font-size: 32px;
@@ -54,7 +45,6 @@ body{
 
 
 /* Item do menu da pagina inicial */
-
 .itemTopMenuBar{
 	margin: 4px;
 	margin-right: 16px;
@@ -63,7 +53,6 @@ body{
 
 
 /* Links do menu */
-
 .itemTopMenuBar a{
 	color: #fff;
 	border-radius: 8px;
@@ -72,7 +61,6 @@ body{
 
 
 /* Links do menu ao passar o mouse */
-
 .itemTopMenuBar a:hover{
 	color: #fff;
 	text-decoration: none;
@@ -247,9 +235,9 @@ form input[disabled]:hover{
 /*CONFIGURACOES DA PAGINA DE CADASTRO DE NOVOS USUARIO*/
 
 /*Div do formulario da pagina*/
-.divUserRegisterForm{
+/*.divUserRegisterForm{
 	
-}
+}*/
 
 .divUserRegisterForm form{
 	width: 100%;

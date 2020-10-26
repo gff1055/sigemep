@@ -43,7 +43,7 @@ class UsersController extends Controller
 
     public function login(Request $dadosLogin){
 
-        // recebendo dados de autenticacao
+        // recebendo dados inseridos pelo usuario
         $dadosAut = [
             'username' => $dadosLogin->get('username'),
             'password' => $dadosLogin->get('password')
@@ -51,38 +51,55 @@ class UsersController extends Controller
 
         // Efetuando login
         try{
-            // A criptografia de senha esta habilitada?
+            // Se a criptografia de senha esta habilitada
+            // é executado o metodo especifico
             if(env('SENHA_HASH')){
                 Auth::attempt($dadosAut, false);
             }
 
             // A criptografia de senha nao esta habilitada
             else{
-                $user = new User();
-                $user->loadDataLogin(DB::select('select * from users where username = ? or email = ?', [$dadosLogin->get('username'), $dadosLogin->get('username')])[0]);
+                // variavel que recebe os dados vindos do banco
+                $databaseData = DB::select('select * from users where username = ? or email = ?', [$dadosLogin->get('username'), $dadosLogin->get('username')]);
+              
+                // Se o usuario nao existe
+                if(!$databaseData){
+                    //throw new Exception("Email/Login invalido");
+                    $loginFeedback['success'] = false;
+                    $loginFeedback['message'] = "O Email/Login nao existe";
+                    echo json_encode($loginFeedback);
+                    return;
+                }
 
-                
-                
-                // Usuario nao existe?
-                if(!$user)
-                    throw new Exception("Email/Login invalido");
+                // Usuario existe
+                else{
+                    $user = new User();
+                    $user->loadDataLogin($databaseData[0]);
 
-                // A senha do usuario esta correta?
-                if($user->password != $dadosLogin->get('password'))
-                    throw new Exception("Senha invalida");
-                
-                
+                    // A senha do usuario esta correta?
+                    if($user->password != $dadosLogin->get('password')){
+                        //throw new Exception("Senha invalida");
+                        $loginFeedback['success'] = false;
+                        $loginFeedback['message'] = "Senha invalida";
+                        echo json_encode($loginFeedback);
+                        return;
+                    }
+                }
 
                 Auth::login($user);
-
-                
             }
-            return redirect()->route('user.index');
-            
+            //return redirect()->route('user.index');
+            $loginFeedback['success'] = true;
+            echo json_encode($loginFeedback);
+            return;
         }
-        
+
         catch(Exception $e){
-            return $e->getMessage();
+            $loginFeedback['success'] = false;
+            $loginFeedback['message'] = $e->getMessage();
+            echo json_encode($loginFeedback);
+            return;
+            //return $e->getMessage();
         }
     }
     
