@@ -15,25 +15,26 @@
 	!!}
 
 	
-	<div class="formUserRegisterTitle">
-		<span class="logo">KliNicK</span>
+		<div class="formUserRegisterTitle">
+			<span class="logo">KliNicK</span>
+			<br>
+			Crie sua conta e faça consultas com medicos on-line de varias especialidades
+			<br>
+		</div>
 		<br>
-		Crie sua conta e faça consultas com medicos on-line de varias especialidades
-		<br>
-	</div>
-	<br>	
-
+		<span class="requiredFieldLabel">*Campo obrigatorio</span>	
 		{!! Form::text('name', null, [
 			'class'=>'atrForm',
 			'placeholder'=>'Nome'
 		]) !!}
 
+		<br><br><span class="requiredFieldLabel">*Campo obrigatorio</span>
 		{!! Form::text('username', null, [
 			'class'=>'atrForm',
 			'placeholder'=>'Usuario'
 		]) !!}
-		<span id="passwordWarning"></span>
-		
+
+		<br><br><span id="passwordWarning"></span>
 		{!! Form::password('password', [
 			'class'=>'atrForm atrFormSizeHalf',
 			'id' => 'password',
@@ -46,11 +47,13 @@
 			'placeholder'=>'Confirmar senha'
 		]) !!}
 
+		<br><br><span class="requiredFieldLabel" id="email">*Campo obrigatorio</span>
 		{!! Form::text('email', null, [
 			'class'=>'atrForm',
 			'placeholder'=>'Email'
 		]) !!}
-
+		
+		<br><br>
 		{!! Form::text('dataNasc', null, [
 			'class'=>'atrForm atrFormSizeHalf',
 			'placeholder'=>'Data de Nascimento'
@@ -64,6 +67,7 @@
 			'class'=>'atrForm',
 		]) !!}
 
+		<br><br><span class="requiredFieldLabel">*Campo obrigatorio</span>
 		{!! Form::text('phone', null, [
 			'class'=>'atrForm',
 			'placeholder'=>'Fone'
@@ -99,6 +103,8 @@
 	-->	
 
 	{!!Form::close()!!}
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 	<script src="{{asset('js/checkFormRegister.js')}}"></script>
 	</div>
 @endsection

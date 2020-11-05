@@ -43,7 +43,6 @@ body{
 	margin-right: 16px;
 }
 
-
 /* Item do menu da pagina inicial */
 .itemTopMenuBar{
 	margin: 4px;
@@ -51,14 +50,12 @@ body{
 
 }
 
-
 /* Links do menu */
 .itemTopMenuBar a{
 	color: #fff;
 	border-radius: 8px;
 	padding: 10px;
 }
-
 
 /* Links do menu ao passar o mouse */
 .itemTopMenuBar a:hover{
@@ -78,73 +75,34 @@ body{
 
 /* Area de escolha de tipo de acesso */
 
-/*.chooseTypeAccess{
-	display: grid;
-	grid-template-columns: 50% 50%;
-	height: 80%;
-	margin: 8px;
-	
-}*/
-
-/*.typeAccess{
-	display: flex;
-	width: 100%;
-	align-items: center;
-	justify-content: center;
-	font-size: 2em;
-	background-color: rgba(0,0,0,0.5);
-	text-align: center;
-	background-size: cover;
-	transition-duration: 1s;
-	
-}*/
-
-/*.typeAccess:hover{
-	background-color: rgba(0,0,0,0);
-}
-
-.typeAccess a:link{
-	text-decoration: none;
-}
-
-.typeAccessClick{
-	background-color:  #009900;
-	padding: 16px;
-	border-radius: 16px;
-	color: #dddddd;
-}
-
-.typeAccessClick:hover{
-	background-color: #006600;
-	padding: 16px;
-	border-radius: 16px;
-	color: #dddddd;
-}*/
-
 .logo{
 	font-family: 'Lobster', cursive;
 	color: #009900/*#477F6D*/;
 }
 
 
-/* Estilo geral dos formularios */
+/** Estilo geral dos formularios **/
 
-form{											/* Estilo geral dos formularios */
+
+form{											
 	padding: 30px;
 	width: fit-content;
 	height: auto;
 	border-radius: 25px;
 }
 
-form .logo{
+/* Logotipo no formluarios*/
+form .logo{										
 	font-size: 48px;
 }
 
-form .icone{
+/* Icone nos formularios */
+form .icone{									
 	color: #009900/*#477F6D*/;
 }
 
-.atrForm{										/* Estilo geral dos atributos dos formularios */
+/* Estilo geral dos atributos dos formularios */
+.atrForm{										
 	font-size: 16px;
 	margin: 8px 0px 8px 0px;
 	border-radius: 8px;
@@ -153,61 +111,61 @@ form .icone{
 	border-color: #333333;
 }
 
+/* Estilo de campos que ocupam metade do formulario */
 .atrFormSizeHalf{
 	width: 49.5%;
 }
 
+/* Div que contem botoes submit dos formularios */
 form .divBtEnviar{
 	text-align: center;
 }
 
-form input[type="submit"]{
+/* Estilo do botao submit do formulario*/
+form .divBtEnviar input[type="submit"]{
+	width: 50%;
+}
+
+/* Botoes submit dos formularios */
+form input[type="submit"]{						
 	background-color: /*#5BA28B*/#009900;
 	font-weight: bold;
 	color: white;
 	margin-top: 32px;
 }
 
-form .divBtEnviar input[type="submit"]{	/* Estilo do botao submit do formulario de login */
-	width: 50%;
+/* Botoes submit ao passar o mouse por cima */
+form input[type="submit"]:hover{				
+	background-color: /*#477F6D*/#006600;
 }
 
-form input[type="text"], form input[type="password"]{
+/* Campos de texto e campos de senha */
+form input[type="text"], form input[type="password"]{	
 	text-shadow: 10px, 10px;
 	border: 1px solid #888888;
 }
 
-
-form input[type="submit"]:hover{
-	background-color: /*#477F6D*/#006600;
-}
-
-form input[disabled]{
+/* Atributos desabilitados */
+form input[disabled]{							
 	background-color: /*#477F6D*/#888888;
 }
 
-form input[disabled]:hover{
+/* Atributos desabilitados quando passar o mouse por cima */
+form input[disabled]:hover{						
 	background-color: /*#477F6D*/#888888;
 }
-
-
-/*Configuracoes da area de login de medicos*/
-
-/*.bodyPaginaLoginDoctor{								/* Estilo do body da pagina de login */
-/*	background-image: url("/images/wall.jpg");
-	background-size: cover;
-	font-family: Verdana, "sans-serif";	
-}*/
 
 
 /*Configuracoes da area de login do usuario*/
 
-.bodyPaginaLoginUser{								/* Estilo do body da pagina de login */
+/* Estilo do body da pagina de login */
+.bodyPaginaLoginUser{								
 	background-image: url("/images/frontdesk.png");
 	background-size: cover;
 	font-family: Verdana, "sans-serif";	
 }
 
+/* Camada escura em cima da imagem de fundo */
 .divMaskBackgroundImage{
 	background-color: rgba(0,0,0,.5);
 }
@@ -220,13 +178,15 @@ form input[disabled]:hover{
 	justify-content: center;					/*Alinha form no centro*/
 }
 
-.formLogin{										/*Estilo do formulario de login*/
+/*Estilo do formulario de login*/
+.formLogin{										
 	background-color: #ffffff;
 	margin-top: 1%;
 	width: 400px;
 	text-align: center;
 }
 
+/* Estilo dos atributos do formulario de login */
 .formLogin .atrForm{
 	width: 82%;
 }
@@ -234,11 +194,7 @@ form input[disabled]:hover{
 
 /*CONFIGURACOES DA PAGINA DE CADASTRO DE NOVOS USUARIO*/
 
-/*Div do formulario da pagina*/
-/*.divUserRegisterForm{
-	
-}*/
-
+/* Estilo da div que contem o formulario de cadastro */
 .divUserRegisterForm form{
 	width: 100%;
 }
@@ -246,4 +202,9 @@ form input[disabled]:hover{
 /*Titulo do formulario*/
 .formUserRegisterTitle{
 	text-align: center;
+}
+
+.requiredFieldLabel{
+	color: red;
+	font-size: 0.8em;
 }

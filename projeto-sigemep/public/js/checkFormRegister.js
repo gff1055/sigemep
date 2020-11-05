@@ -6,6 +6,7 @@ passwordWarning = document.getElementById('passwordWarning');	// Area de aviso d
 
 submitUserRegister.disabled = true;				// Dessabilitando o elemento submit
 
+
 // Evento ao digitar no campo verificador de senha
 checkPassword.addEventListener("keyup", function(){
 
@@ -22,6 +23,7 @@ checkPassword.addEventListener("keyup", function(){
 		passwordWarning.innerHTML = "<br>*As senhas nao coincidem ou nao foram preenchidas<br>";
 	}
 },false);
+
 
 // Evento ao digitar no campo de senha
 password.addEventListener("keyup", function(){
@@ -40,6 +42,7 @@ password.addEventListener("keyup", function(){
 	}
 },false);
 
+
 // Metodo para testar se os dados passados sao iguais
 passwordFieldSame = function(d1, d2){
 	var rtrnValue;
@@ -47,7 +50,7 @@ passwordFieldSame = function(d1, d2){
 	// Os dados sao iguais?
 	if(d1 == d2){
 	
-		// Ambos os dadosOs dados nao estao em branco?
+		// Ambos os dados nao estao em branco?
 		if(d1 != ""){
 			rtrnValue = 1;
 		}
@@ -66,4 +69,14 @@ passwordFieldSame = function(d1, d2){
 	
 	return rtrnValue;
 }
+
+
+/*Ao clicar no botao submit é feita uma verificacao do nome do usuario e email*/
+$(function(){
+
+	$('.formUserRegister').submit(function(event){
+//		event.preventDefault();
+//		alert("FUI CLICADO!!!");
+	});
+})
 
