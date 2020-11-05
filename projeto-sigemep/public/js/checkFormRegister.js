@@ -6,7 +6,6 @@ passwordWarning = document.getElementById('passwordWarning');	// Area de aviso d
 
 submitUserRegister.disabled = true;				// Dessabilitando o elemento submit
 
-
 // Evento ao digitar no campo verificador de senha
 checkPassword.addEventListener("keyup", function(){
 
@@ -75,8 +74,38 @@ passwordFieldSame = function(d1, d2){
 $(function(){
 
 	$('.formUserRegister').submit(function(event){
-//		event.preventDefault();
-//		alert("FUI CLICADO!!!");
+		event.preventDefault();
+		blankFieldCounter = 0;
+		var requiredField = $('.requiredField');
+
+		// Percorre os campos obrigatorios do formulario para verificar se tem algum em branco
+		for(var i in requiredField){
+			if(requiredField[i].value == ""){
+				blankFieldCounter++;
+			}
+		}
+
+		// Se existir campos em branco é exibida uma mensagem
+		if(blankFieldCounter){
+			alert("Existem campos obrigatorios não preenchidos")
+		}
+
+		// Se todos os campos estiverem preenchidos a operacao de cadastro continua...
+		else{
+
+			// Escopo da requisicao
+			$.ajax({
+				url: "/user",
+				type: "post",
+				data: $(this).serialize(),
+				dataType: "json",
+
+				success: function(response){
+
+				}
+			})
+
+		}
 	});
 })
 

@@ -9,7 +9,7 @@
 </section>
 	<div class="divUserRegisterForm">
 	{!! Form::open([
-		'route' => 'user.store',
+		//'route' => 'user.store',
 		'class' => 'formUserRegister'
 		])
 	!!}
@@ -24,13 +24,13 @@
 		<br>
 		<span class="requiredFieldLabel">*Campo obrigatorio</span>	
 		{!! Form::text('name', null, [
-			'class'=>'atrForm',
+			'class'=>'atrForm requiredField',
 			'placeholder'=>'Nome'
 		]) !!}
 
 		<br><br><span class="requiredFieldLabel">*Campo obrigatorio</span>
 		{!! Form::text('username', null, [
-			'class'=>'atrForm',
+			'class'=>'atrForm requiredField',
 			'placeholder'=>'Usuario'
 		]) !!}
 
@@ -49,7 +49,7 @@
 
 		<br><br><span class="requiredFieldLabel" id="email">*Campo obrigatorio</span>
 		{!! Form::text('email', null, [
-			'class'=>'atrForm',
+			'class'=>'atrForm requiredField',
 			'placeholder'=>'Email'
 		]) !!}
 		
@@ -69,7 +69,7 @@
 
 		<br><br><span class="requiredFieldLabel">*Campo obrigatorio</span>
 		{!! Form::text('phone', null, [
-			'class'=>'atrForm',
+			'class'=>'atrForm requiredField',
 			'placeholder'=>'Fone'
 		]) !!}
 

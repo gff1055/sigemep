@@ -146,7 +146,7 @@ class UsersController extends Controller
 
         return view('user.index',[
             'user' => $user,
-            'request' => $request
+//            'request' => $request
         ]);
 
         /*try {
