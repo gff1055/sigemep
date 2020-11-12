@@ -22,7 +22,11 @@ class UserService{
 		try{
 			
 			$this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
+
+			// Variavel recebe o feedback da existencia(ou nao) do usuario informado
 			$userExist = DB::select('select * from users where username = ?', [$data['username']]);
+
+			$arrayDataError = [];
 			
 			// Existe um usuario cadastrado com as informaçoes fornecidas...
 			if($userExist){
@@ -30,12 +34,14 @@ class UserService{
 				// Retorna mensagem ao controller
 				return[
 					'success' => 'false',
+					'code' => '55418313',
 					'message' => 'Já exite uma conta com esse nome de usuario',
 					'data' => null
 				];
 
 			}
 
+			// Variavel recebe o feedback da existencia(ou nao) do email informado
 			$emailExist = DB::select('select * from users where email = ?', [$data['email']]);
 
 			// Existe um email ja cadastrado no banco de dados...
@@ -44,6 +50,7 @@ class UserService{
 				// Retorna mensagem ao controller
 				return[
 					'success' => 'false',
+					'code' => '341313',
 					'message' => 'Já exite uma conta associada com esse email',
 					'data' => null
 				];
@@ -52,11 +59,12 @@ class UserService{
 
 			// Não existe nenhum usuario cadastrado...
 			if(!$userExist && !$emailExist){
-				$user = $this->repository->create($data); //SQLSTATE[23000]: Integrity constraint violation:
+				$user = $this->repository->create($data);
 
 				// Retorna mensagem ao controller
 				return[
 					'success' => 'true',
+					'code' => '538',
 					'message' => 'Usuario Cadastrado',
 					'data' => $user
 				];

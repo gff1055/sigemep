@@ -24,14 +24,15 @@
 		<br>
 		<span class="requiredFieldLabel">*Campo obrigatorio</span>	
 		{!! Form::text('name', null, [
-			'class'=>'atrForm requiredField',
-			'placeholder'=>'Nome'
+			'class' => 'atrForm requiredField',
+			'placeholder' => 'Nome'
 		]) !!}
 
-		<br><br><span class="requiredFieldLabel">*Campo obrigatorio</span>
+		<br><br><span class="requiredFieldLabel" id="idLabelUserName">*Campo obrigatorio</span>
 		{!! Form::text('username', null, [
-			'class'=>'atrForm requiredField',
-			'placeholder'=>'Usuario'
+			'class' => 'atrForm requiredField',
+			'placeholder' => 'Usuario',
+			'id' => 'idInputUserName'
 		]) !!}
 
 		<br><br><span id="passwordWarning"></span>
@@ -47,16 +48,17 @@
 			'placeholder'=>'Confirmar senha'
 		]) !!}
 
-		<br><br><span class="requiredFieldLabel" id="email">*Campo obrigatorio</span>
+		<br><br><span class="requiredFieldLabel" id="idLabelEmail">*Campo obrigatorio</span>
 		{!! Form::text('email', null, [
-			'class'=>'atrForm requiredField',
-			'placeholder'=>'Email'
+			'class' => 'atrForm requiredField',
+			'placeholder' => 'Email',
+			'id' => 'idInputEmail'
 		]) !!}
 		
 		<br><br>
 		{!! Form::text('dataNasc', null, [
-			'class'=>'atrForm atrFormSizeHalf',
-			'placeholder'=>'Data de Nascimento'
+			'class' => 'atrForm atrFormSizeHalf',
+			'placeholder' => 'Data de Nascimento'
 		]) !!}
 
 		{!!Form::Label('sexo', 'Sexo: ')!!}
@@ -69,8 +71,8 @@
 
 		<br><br><span class="requiredFieldLabel">*Campo obrigatorio</span>
 		{!! Form::text('phone', null, [
-			'class'=>'atrForm requiredField',
-			'placeholder'=>'Fone'
+			'class' => 'atrForm requiredField',
+			'placeholder' => 'Fone'
 		]) !!}
 
 		<div class="divBtEnviar">

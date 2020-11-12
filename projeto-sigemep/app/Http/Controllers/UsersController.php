@@ -17,22 +17,9 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use Exception;
 
-/**
- * Class UsersController.
- *
- * @package namespace App\Http\Controllers;
- */
-class UsersController extends Controller
-{
-    /**
-     * @var UserRepository
-     */
+class UsersController extends Controller{
+    
     protected $repository;
-
-    /**
-     * @var UserValidator
-     */
-    //protected $validator;
     protected $service;
 
     public function __construct(UserRepository $repository, UserService $service){
@@ -136,46 +123,24 @@ class UsersController extends Controller
         //dd($request->all());
         $request = $this->service->store($request->all());
 
-        
+        // Se o usuario for cadsatrado com sucesso, uma mensagem de "sucesso" é enviada para a view
         if($request['success']){
-            $user = $request['data'];
-        }
-        else{
-            $user = null;
+            echo json_encode($request);
+            return;
+            //--->$user = $request['data'];
         }
 
-        return view('user.index',[
+        // Caso contrario, uma mensagem de "falha" é enviada
+        else{
+            echo json_encode($request);
+            return;
+            //--->$user = null;
+        }
+
+        /*return view('user.index',[
             'user' => $user,
 //            'request' => $request
-        ]);
-
-        /*try {
-
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-
-            $user = $this->repository->create($request->all());
-
-            $response = [
-                'message' => 'User created.',
-                'data'    => $user->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }*/
+        ]);*/
     }
 
     /**

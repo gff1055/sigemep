@@ -19,7 +19,8 @@ checkPassword.addEventListener("keyup", function(){
 	else if(passwordFieldSame(password.value, checkPassword.value) == -1){
 		submitUserRegister.disabled = true;
 		passwordWarning.style.color = "#ff0000";
-		passwordWarning.innerHTML = "<br>*As senhas nao coincidem ou nao foram preenchidas<br>";
+		passwordWarning.style.fontSize = "0.8em";
+		passwordWarning.innerHTML = "*As senhas nao coincidem ou nao foram preenchidas<br>";
 	}
 },false);
 
@@ -37,7 +38,8 @@ password.addEventListener("keyup", function(){
 	else if(passwordFieldSame(password.value, checkPassword.value) == -1){
 		submitUserRegister.disabled = true;
 		passwordWarning.style.color = "#ff0000";
-		passwordWarning.innerHTML = "<br>*As senhas nao coincidem ou nao foram preenchidas<br>";
+		passwordWarning.style.fontSize = "0.8em";
+		passwordWarning.innerHTML = "*As senhas nao coincidem ou nao foram preenchidas<br>";
 	}
 },false);
 
@@ -81,6 +83,7 @@ $(function(){
 		// Percorre os campos obrigatorios do formulario para verificar se tem algum em branco
 		for(var i in requiredField){
 			if(requiredField[i].value == ""){
+				requiredField[i].style.borderColor = "red";
 				blankFieldCounter++;
 			}
 		}
@@ -100,8 +103,26 @@ $(function(){
 				data: $(this).serialize(),
 				dataType: "json",
 
-				success: function(response){
+				success: function(answer){
 
+					alert("AAAH");
+					console.log(answer.success);
+					console.log(answer.code);
+
+					if(!answer.success){
+
+						if(answer.code == '55418313'){
+							alert("ERRO! Esse usuario existe cara palida");
+						}
+
+						else if(answer.code == '341313'){
+							alert("ERRO! Esse email existe cara palida");
+						}
+
+						else{
+							alert("FALHA GERAL....");
+						}
+					}	
 				}
 			})
 
