@@ -80,7 +80,7 @@ $(function(){
 		blankFieldCounter = 0;
 		var requiredField = $('.requiredField');
 
-		// Percorre os campos obrigatorios do formulario para verificar se tem algum em branco
+		// Percorre os campos obrigatorios do formulario para verificar se tem algum campo em branco
 		for(var i in requiredField){
 			if(requiredField[i].value == ""){
 				requiredField[i].style.borderColor = "red";
@@ -103,26 +103,38 @@ $(function(){
 				data: $(this).serialize(),
 				dataType: "json",
 
+				// Funcao em resposta da requisicao
 				success: function(answer){
 
-					alert("AAAH");
-					console.log(answer.success);
-					console.log(answer.code);
-
+					// Se o cadastro não for concluido é verificado se nome de o usuario e o email
+					// informados estão sendo usados em outra conta
 					if(!answer.success){
 
+						alert("Um ou mais campos possuem informações não válidas. Verifique")
+
+						// Se o nome de usuario informado ja estiver sendo usado em outra conta,
+						// o nome de usuario é apagado do formulario e 
+						// é enviada uma mensagem para o usuario
 						if(answer.code == '55418313'){
-							alert("ERRO! Esse usuario existe cara palida");
+							idInputUserName = $('#idInputUserName');
+							idInputUserName[0].value = "";
+							idInputUserName.css("border-color","red");
+							idLabelUserName = $('#idLabelUserName');
+							idLabelUserName.css("color","red");
+							idLabelUserName.html(idLabelUserName.html() + "  (ERRO: Já existe uma conta cadastrada com este nome de usuario. Digite outro)");
 						}
 
+						// Se o email informado ja estiver sendo usado em outra conta, é enviada
+						// uma mensagem para o usuario
 						else if(answer.code == '341313'){
-							alert("ERRO! Esse email existe cara palida");
+							console.log("ERRO! Esse email existe cara palida");
 						}
 
+						// Outra falha...
 						else{
-							alert("FALHA GERAL....");
+							console.log("FALHA GERAL....");
 						}
-					}	
+					}
 				}
 			})
 

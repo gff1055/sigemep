@@ -33,7 +33,7 @@ class UserService{
 
 				// Retorna mensagem ao controller
 				return[
-					'success' => 'false',
+					'success' => false,
 					'code' => '55418313',
 					'message' => 'Já exite uma conta com esse nome de usuario',
 					'data' => null
@@ -49,7 +49,7 @@ class UserService{
 
 				// Retorna mensagem ao controller
 				return[
-					'success' => 'false',
+					'success' => false,
 					'code' => '341313',
 					'message' => 'Já exite uma conta associada com esse email',
 					'data' => null
@@ -63,7 +63,7 @@ class UserService{
 
 				// Retorna mensagem ao controller
 				return[
-					'success' => 'true',
+					'success' => true,
 					'code' => '538',
 					'message' => 'Usuario Cadastrado',
 					'data' => $user
