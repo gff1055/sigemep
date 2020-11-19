@@ -48,7 +48,8 @@ password.addEventListener("keyup", function(){
 passwordFieldSame = function(d1, d2){
 	var rtrnValue;
 
-	// Os dados sao iguais?
+	/* Se os dados sao iguais, ele testa se os dados são mesmo diferentes ou eles estão apenas
+	em branco */
 	if(d1 == d2){
 	
 		// Ambos os dados nao estao em branco?
@@ -81,10 +82,14 @@ $(function(){
 		var requiredField = $('.requiredField');
 
 		// Percorre os campos obrigatorios do formulario para verificar se tem algum campo em branco
-		for(var i in requiredField){
+		for(var i = 0; i < requiredField.length; i++){
+			console.log(i);
 			if(requiredField[i].value == ""){
 				requiredField[i].style.borderColor = "red";
 				blankFieldCounter++;
+			}
+			else{
+				requiredField[i].style.borderColor = "";
 			}
 		}
 
@@ -96,6 +101,19 @@ $(function(){
 		// Se todos os campos estiverem preenchidos a operacao de cadastro continua...
 		else{
 
+			/* Percorre os campos obrigatorios do formulario para verificar se tem algum campo
+			realçado em vermelho (Tinha erro mas foi corrigido pelo usuario) */
+			/*for(var i = 0; i < requiredField.length; i++){
+
+				console.log(i);
+
+				/* Reseta o estilo do campo */
+				/*if(requiredField[i].style.borderColor == "red"){
+					requiredField[i].style.borderColor = "";
+				}
+
+			}*/
+
 			// Escopo da requisicao
 			$.ajax({
 				url: "/user",
@@ -106,7 +124,7 @@ $(function(){
 				// Funcao em resposta da requisicao
 				success: function(answer){
 
-					// Se o cadastro não for concluido é verificado se nome de o usuario e o email
+					// Se o cadastro não for concluido é verificado se nome de usuario e o email
 					// informados estão sendo usados em outra conta
 					if(!answer.success){
 
@@ -117,8 +135,8 @@ $(function(){
 						// é enviada uma mensagem para o usuario
 						if(answer.code == '55418313'){
 							idInputUserName = $('#idInputUserName');
-							idInputUserName[0].value = "";
 							idInputUserName.css("border-color","red");
+							idInputUserName[0].value = "";
 							idLabelUserName = $('#idLabelUserName');
 							idLabelUserName.css("color","red");
 							idLabelUserName.html(idLabelUserName.html() + "  (ERRO: Já existe uma conta cadastrada com este nome de usuario. Digite outro)");
