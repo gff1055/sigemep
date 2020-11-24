@@ -44,7 +44,16 @@ password.addEventListener("keyup", function(){
 },false);
 
 
-// Metodo para testar se os dados passados sao iguais
+/*
+Funcao: passwordFieldSame
+Objetivo: Testar se os valores passados sao iguais
+Argumentos: dois valores
+Retorno:
+	1:	Os valores sao iguais
+	0:	Os valores sao iguais pois ambos estao em branco
+	-1:	Os valores sao diferentes
+*/
+
 passwordFieldSame = function(d1, d2){
 	var rtrnValue;
 
@@ -78,41 +87,48 @@ $(function(){
 
 	$('.formUserRegister').submit(function(event){
 		event.preventDefault();
+
+		// Variavel que conta os campos que estao em branco
 		blankFieldCounter = 0;
+
+		// Variavel que recebe a referencia dos campos obriogatorios do formulario
 		var requiredField = $('.requiredField');
 
 		// Percorre os campos obrigatorios do formulario para verificar se tem algum campo em branco
 		for(var i = 0; i < requiredField.length; i++){
-			console.log(i);
+			
+			// Se tiver um campo em branco ele é realçado em vermelho e o contador incrementado
 			if(requiredField[i].value == ""){
 				requiredField[i].style.borderColor = "red";
 				blankFieldCounter++;
 			}
+
+			// Caso contrario o campo recebe o estilo original
 			else{
 				requiredField[i].style.borderColor = "";
 			}
 		}
 
-		// Se existir campos em branco é exibida uma mensagem
+		// Se existir campos em branco é exibida um alerta para o usuario
 		if(blankFieldCounter){
 			alert("Existem campos obrigatorios não preenchidos")
 		}
 
-		// Se todos os campos estiverem preenchidos a operacao de cadastro continua...
+		// Caso contrario a operacao de cadastro continua...
 		else{
+			feedbackUserName = $('#feedbackUserName'); 
+			feedbackEmail = $('#feedbackEmail'); 
+			
 
-			/* Percorre os campos obrigatorios do formulario para verificar se tem algum campo
-			realçado em vermelho (Tinha erro mas foi corrigido pelo usuario) */
-			/*for(var i = 0; i < requiredField.length; i++){
+			// Resetando a area de avisos no rotulo dos formularios
 
-				console.log(i);
-
-				/* Reseta o estilo do campo */
-				/*if(requiredField[i].style.borderColor == "red"){
-					requiredField[i].style.borderColor = "";
-				}
-
-			}*/
+			if(feedbackUserName[0].textContent!=""){
+				feedbackUserName.html("");
+			}
+			
+			if(feedbackEmail[0].textContent!=""){
+				feedbackEmail.html("");
+			}
 
 			// Escopo da requisicao
 			$.ajax({
@@ -137,15 +153,23 @@ $(function(){
 							idInputUserName = $('#idInputUserName');
 							idInputUserName.css("border-color","red");
 							idInputUserName[0].value = "";
-							idLabelUserName = $('#idLabelUserName');
-							idLabelUserName.css("color","red");
-							idLabelUserName.html(idLabelUserName.html() + "  (ERRO: Já existe uma conta cadastrada com este nome de usuario. Digite outro)");
+
+							
+							//idLabelUserName = $('#idLabelUserName');
+							feedbackUserName.css("color","red");
+							feedbackUserName.html("  (ERRO: Já existe uma conta cadastrada com o nome de usuario informado. Digite outro)");
 						}
 
 						// Se o email informado ja estiver sendo usado em outra conta, é enviada
 						// uma mensagem para o usuario
 						else if(answer.code == '341313'){
-							console.log("ERRO! Esse email existe cara palida");
+							idInputEmail = $('#idInputEmail');
+							idInputEmail.css("border-color","red");
+							idInputEmail[0].value = "";
+							
+							idLabelEmail = $('#idLabelEmail');
+							idLabelEmail.css("color","red");
+							idLabelEmail.html(idLabelEmail.html() + "  (ERRO: Já existe uma conta cadastrada com o Email informado. Digite outro)");
 						}
 
 						// Outra falha...

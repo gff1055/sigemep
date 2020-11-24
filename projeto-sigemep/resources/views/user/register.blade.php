@@ -22,13 +22,15 @@
 			<br>
 		</div>
 		<br>
-		<span class="requiredFieldLabel">*Campo obrigatorio</span>	
+		<span class="requiredFieldLabel">*Campo obrigatorio</span>
 		{!! Form::text('name', null, [
 			'class' => 'atrForm requiredField',
 			'placeholder' => 'Nome'
 		]) !!}
 
-		<br><br><span class="requiredFieldLabel" id="idLabelUserName">*Campo obrigatorio</span>
+		<br><br>
+		<span class="requiredFieldLabel" id="idLabelUserName">*Campo obrigatorio </span>
+		<span class="requiredFieldLabel" id="feedbackUserName"></span>
 		{!! Form::text('username', null, [
 			'class' => 'atrForm requiredField',
 			'placeholder' => 'Usuario',
@@ -48,7 +50,9 @@
 			'placeholder'=>'Confirmar senha'
 		]) !!}
 
-		<br><br><span class="requiredFieldLabel" id="idLabelEmail">*Campo obrigatorio</span>
+		<br><br>
+		<span class="requiredFieldLabel" id="idLabelEmail">*Campo obrigatorio </span>
+		<span class="requiredFieldLabel" id="feedbackEmail"></span>
 		{!! Form::text('email', null, [
 			'class' => 'atrForm requiredField',
 			'placeholder' => 'Email',
