@@ -6,8 +6,13 @@ passwordWarning = document.getElementById('passwordWarning');	// Area de aviso d
 
 submitUserRegister.disabled = true;				// Dessabilitando o elemento submit
 
-// Evento ao digitar no campo verificador de senha
-checkPassword.addEventListener("keyup", function(){
+
+checkPassword.addEventListener("keyup",
+/**
+ * Funcao: Anonima associada ao evento de pressionamento de tecla
+ * Objetivo: Checar se a senha foi digitada corretamente nos campos 'senha' e 'confirmar senha'
+ */
+function(){
 
 	// A senha foi digitada corretamente nos dois campos?
 	if(passwordFieldSame(password.value, checkPassword.value) == 1){
@@ -25,8 +30,12 @@ checkPassword.addEventListener("keyup", function(){
 },false);
 
 
-// Evento ao digitar no campo de senha
-password.addEventListener("keyup", function(){
+password.addEventListener("keyup",
+/**
+ * Funcao: Anonima associada ao evento de pressionamento de tecla
+ * Objetivo: Checar se a senha foi digitada corretamente nos campos 'senha' e 'confirmar senha'
+ */
+function(){
 
 	// A senha foi digitada corretamente nos dois campos?
 	if(passwordFieldSame(password.value, checkPassword.value) == 1){
@@ -42,6 +51,7 @@ password.addEventListener("keyup", function(){
 		passwordWarning.innerHTML = "*As senhas nao coincidem ou nao foram preenchidas<br>";
 	}
 },false);
+
 
 
 /*
@@ -82,9 +92,12 @@ passwordFieldSame = function(d1, d2){
 }
 
 
-/*Ao clicar no botao submit é feita uma verificacao do nome do usuario e email*/
 $(function(){
 
+	/**
+	 * Funcao: anonima associada com o evento de enviar(submeter) formulario
+	 * Objetivo: Fazer a validacao das informações e o enviar o formulario para cadastro
+	 */
 	$('.formUserRegister').submit(function(event){
 		event.preventDefault();
 
@@ -97,19 +110,20 @@ $(function(){
 		// Percorre os campos obrigatorios do formulario para verificar se tem algum campo em branco
 		for(var i = 0; i < requiredField.length; i++){
 			
-			// Se tiver um campo em branco ele é realçado em vermelho e o contador incrementado
+			// Se tiver um campo em branco ele é realçado em vermelho e
+			// o contador de campos em branco incrementado
 			if(requiredField[i].value == ""){
 				requiredField[i].style.borderColor = "red";
 				blankFieldCounter++;
 			}
 
-			// Caso contrario o campo recebe o estilo original
+			// Caso contrario o campo é realçado com o estilo original
 			else{
 				requiredField[i].style.borderColor = "";
 			}
 		}
 
-		// Se existir campos em branco é exibida um alerta para o usuario
+		// Se existir campos em branco é exibido um alerta para o usuario
 		if(blankFieldCounter){
 			alert("Existem campos obrigatorios não preenchidos")
 		}
@@ -137,42 +151,37 @@ $(function(){
 				data: $(this).serialize(),
 				dataType: "json",
 
-				// Funcao em resposta da requisicao
+				/**
+	 			* Funcao: success
+	 			* Objetivo: validar os dados do formulario e fazer o cadastro
+	 			*/
 				success: function(answer){
 
-					// Se o cadastro não for concluido é verificado se nome de usuario e o email
+					// Se a operacao de cadastro falher, é verificado se o nome de usuario e o email
 					// informados estão sendo usados em outra conta
 					if(!answer.success){
-
 						alert("Um ou mais campos possuem informações não válidas. Verifique")
 
-						// Se o nome de usuario informado ja estiver sendo usado em outra conta,
-						// o nome de usuario é apagado do formulario e 
-						// é enviada uma mensagem para o usuario
+						/* Se o nome de usuario informado ja estiver sendo usado em outra conta,
+						os dados sao apagados e é enviado um alerta para o usuario */
 						if(answer.code == '55418313'){
 							idInputUserName = $('#idInputUserName');
 							idInputUserName.css("border-color","red");
 							idInputUserName[0].value = "";
-
-							
-							//idLabelUserName = $('#idLabelUserName');
 							feedbackUserName.css("color","red");
 							feedbackUserName.html("  (ERRO: Já existe uma conta cadastrada com o nome de usuario informado. Digite outro)");
 						}
 
-						// Se o email informado ja estiver sendo usado em outra conta, é enviada
-						// uma mensagem para o usuario
+						/* O mesmo acontece com o email... */
 						else if(answer.code == '341313'){
 							idInputEmail = $('#idInputEmail');
 							idInputEmail.css("border-color","red");
 							idInputEmail[0].value = "";
-							
-							idLabelEmail = $('#idLabelEmail');
-							idLabelEmail.css("color","red");
-							idLabelEmail.html(idLabelEmail.html() + "  (ERRO: Já existe uma conta cadastrada com o Email informado. Digite outro)");
+							feedbackEmail.css("color","red");
+							feedbackEmail.html("  (ERRO: Já existe uma conta cadastrada com o Email informado. Digite outro)");
 						}
 
-						// Outra falha...
+						/* Outra falha... */
 						else{
 							console.log("FALHA GERAL....");
 						}

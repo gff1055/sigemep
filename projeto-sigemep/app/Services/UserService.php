@@ -17,8 +17,19 @@ class UserService{
 		$this->validator = $paramValid;
 	}
 
-	public function store($data){
 
+
+	/**
+	 * FUNCAO: 		store
+	 * OBJETIVO: 	Armazenar os dados no banco
+	 * ARGUMENTOS:	Os dados a serem armazenados
+	 * RETORNO:		ARRAY com as seguintes informações
+	 * 					'success' 	-> indica se houve sucesso ou falha
+	 * 					'code' 		-> codigo do erro
+	 * 					'message' 	-> Mensagem que explica o erro
+	 * 					'data' 		-> os dados enviados
+	 */
+	public function store($data){
 		try{
 			
 			$this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);

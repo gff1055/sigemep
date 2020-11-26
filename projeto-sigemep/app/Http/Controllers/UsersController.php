@@ -28,6 +28,10 @@ class UsersController extends Controller{
         //$this->validator  = $validator;
     }
 
+    /*
+    * Funcao: login
+    * Objetivo: Efetuar o login
+    */
     public function login(Request $dadosLogin){
 
         // recebendo dados inseridos pelo usuario
@@ -49,7 +53,8 @@ class UsersController extends Controller{
                 // variavel que recebe os dados vindos do banco
                 $databaseData = DB::select('select * from users where username = ? or email = ?', [$dadosLogin->get('username'), $dadosLogin->get('username')]);
               
-                // Se o usuario nao existe
+                /* Se o usuario nao existe,
+                a operacao é sinalizada como false e é enviado mensagem para a view */
                 if(!$databaseData){
                     //throw new Exception("Email/Login invalido");
                     $loginFeedback['success'] = false;
@@ -58,14 +63,14 @@ class UsersController extends Controller{
                     return;
                 }
 
-                // Usuario existe
+                /* Se o usuario existir, os dados do mesmo sao carregados */
                 else{
                     $user = new User();
                     $user->loadDataLogin($databaseData[0]);
 
-                    // A senha do usuario esta correta?
+                    /* Se a senha informada for diferente da casatrada é enviado
+                    o alerta para a view*/
                     if($user->password != $dadosLogin->get('password')){
-                        //throw new Exception("Senha invalida");
                         $loginFeedback['success'] = false;
                         $loginFeedback['message'] = "Senha invalida";
                         echo json_encode($loginFeedback);
