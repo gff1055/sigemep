@@ -28,10 +28,16 @@ class UsersController extends Controller{
         //$this->validator  = $validator;
     }
 
-    /*
-    * Funcao: login
-    * Objetivo: Efetuar o login
-    */
+
+    /**
+     * FUNCAO:      login 
+     * OBJETIVO:    Efetuar o login
+     * ARGUMENTOS:  Os dados que contidos nos campos 'nome de usuario' e 'senha'
+     * RETORNO:     Um ARRAY com os seguintes dados
+     *                  'success' -> indica se houve falha ou sucesso no login
+     *                  'message' -> mensagem explicando o motivo do erro/excecao
+     */
+    
     public function login(Request $dadosLogin){
 
         // recebendo dados inseridos pelo usuario
@@ -50,7 +56,6 @@ class UsersController extends Controller{
 
             // A criptografia de senha nao esta habilitada
             else{
-                // variavel que recebe os dados vindos do banco
                 $databaseData = DB::select('select * from users where username = ? or email = ?', [$dadosLogin->get('username'), $dadosLogin->get('username')]);
               
                 /* Se o usuario nao existe,
@@ -68,7 +73,7 @@ class UsersController extends Controller{
                     $user = new User();
                     $user->loadDataLogin($databaseData[0]);
 
-                    /* Se a senha informada for diferente da casatrada é enviado
+                    /* Se a senha informada for diferente da cadastrada é enviado
                     o alerta para a view*/
                     if($user->password != $dadosLogin->get('password')){
                         $loginFeedback['success'] = false;
@@ -86,6 +91,7 @@ class UsersController extends Controller{
             return;
         }
 
+        /* Quando houver uma excecao, ela será mostrada na view */
         catch(Exception $e){
             $loginFeedback['success'] = false;
             $loginFeedback['message'] = $e->getMessage();
@@ -95,6 +101,12 @@ class UsersController extends Controller{
         }
     }
     
+
+    /**
+     * FUNCAO:      register
+     * OBJETIVO:    acionar a view para cadastro de novo usuario
+     * RETORNO:     view propriamente dita
+     */
     public function register(){
        return view('user.register');
     }
@@ -115,27 +127,23 @@ class UsersController extends Controller{
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  UserCreateRequest $request
-     *
-     * @return \Illuminate\Http\Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * FUNCAO:      store
+     * OBJETIVO:    Cadastrar o usuario
+     * ARGUMENTOS:  Dados do usuario
+     * RETORNO:     Dados necessarios para avaliar se houve falha ou nao no cadastro
      */
     public function store(UserCreateRequest $request)
     {
         //dd($request->all());
         $request = $this->service->store($request->all());
 
-        // Se o usuario for cadsatrado com sucesso, uma mensagem de "sucesso" é enviada para a view
+        // O usuario sendo cadastrado com sucesso, ou nao,
+        // os dados referentes são enviados para a view
         if($request['success']){
             echo json_encode($request);
             return;
             //--->$user = $request['data'];
         }
-
-        // Caso contrario, uma mensagem de "falha" é enviada
         else{
             echo json_encode($request);
             return;
