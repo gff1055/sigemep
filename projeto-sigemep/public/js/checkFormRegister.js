@@ -157,33 +157,40 @@ $(function(){
 	 			*/
 				success: function(answer){
 
-					// Se a operacao de cadastro falher, é verificado se o nome de usuario e o email
-					// informados estão sendo usados em outra conta
-					if(!answer.success){
+					// Se a resposta da operacao for uma falha,
+					// é verificado se o nome de usuario e o email informados
+					// estão sendo usados em outra conta
+					console.log(answer);
+					if(!answer[0].success){
 						alert("Um ou mais campos possuem informações não válidas. Verifique")
 
-						/* Se o nome de usuario informado ja estiver sendo usado em outra conta,
-						os dados sao apagados e é enviado um alerta para o usuario */
-						if(answer.code == '55418313'){
-							idInputUserName = $('#idInputUserName');
-							idInputUserName.css("border-color","red");
-							idInputUserName[0].value = "";
-							feedbackUserName.css("color","red");
-							feedbackUserName.html("  (ERRO: Já existe uma conta cadastrada com o nome de usuario informado. Digite outro)");
-						}
+						/* O array de resposta é percorrido a fim de coletar todos os feedbacks
+						que há nele */
+						for(var ind = 0; ind < answer.length; ind++){
 
-						/* O mesmo acontece com o email... */
-						else if(answer.code == '341313'){
-							idInputEmail = $('#idInputEmail');
-							idInputEmail.css("border-color","red");
-							idInputEmail[0].value = "";
-							feedbackEmail.css("color","red");
-							feedbackEmail.html("  (ERRO: Já existe uma conta cadastrada com o Email informado. Digite outro)");
-						}
+							/* Se o nome de usuario informado ja estiver sendo usado em outra conta,
+							os dados sao apagados e é enviado um alerta para o usuario */
+							if(answer[ind].code == '55418313'){
+								idInputUserName = $('#idInputUserName');
+								idInputUserName.css("border-color","red");
+								idInputUserName[0].value = "";
+								feedbackUserName.css("color","red");
+								feedbackUserName.html("  (ERRO: Já existe uma conta cadastrada com o nome de usuario informado. Digite outro)");
+							}
 
-						/* Outra falha... */
-						else{
-							console.log("FALHA GERAL....");
+							/* O mesmo acontece com o email... */
+							else if(answer[ind].code == '341313'){
+								idInputEmail = $('#idInputEmail');
+								idInputEmail.css("border-color","red");
+								idInputEmail[0].value = "";
+								feedbackEmail.css("color","red");
+								feedbackEmail.html("  (ERRO: Já existe uma conta cadastrada com o Email informado. Digite outro)");
+							}
+
+							/* Outra falha... */
+							else{
+								console.log("FALHA GERAL....");
+							}
 						}
 					}
 				}

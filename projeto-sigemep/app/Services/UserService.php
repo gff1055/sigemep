@@ -37,13 +37,13 @@ class UserService{
 			// Inicializando uma variavel com o feedback da existencia(ou nao) do usuario informado
 			$userExist = DB::select('select * from users where username = ?', [$data['username']]);
 
-			// Inicializando array que lista os erros que ocorreram no cadastro
-			$arrayDataError = [];
+			// Inicializando array que lista os erros ou sucesso no cadastro
+			$arrayDataFeedback = [];
 			
 			// Se já existir um usuario cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($userExist){
-				return[
+				$arrayDataFeedback[] = [
 					'success' => false,
 					'code' => '55418313',
 					'message' => 'Já exite uma conta com esse nome de usuario',
@@ -57,7 +57,7 @@ class UserService{
 			// Se já existir um email cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($emailExist){
-				return[
+				$arrayDataFeedback[] = [
 					'success' => false,
 					'code' => '341313',
 					'message' => 'Já exite uma conta associada com esse email',
@@ -69,13 +69,15 @@ class UserService{
 			o array indicando sucesso é enviado para a view */
 			if(!$userExist && !$emailExist){
 				$user = $this->repository->create($data);
-				return[
+				$arrayDataFeedback[] = [
 					'success' => true,
 					'code' => '538',
 					'message' => 'Usuario Cadastrado',
 					'data' => $user
 				];
 			}
+
+			return $arrayDataFeedback;
 		}
 
 		// Em caso de excecao, o array indicando excecao é enviado para a view
