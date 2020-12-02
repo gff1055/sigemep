@@ -25,7 +25,7 @@ $(function(){
 					window.location.href = "/user";
 				}
 
-				// Se os dados de login nao conferem o usuario é exibida o feedback
+				// Se os dados de login nao conferem, é exibido o feedback
 				else{
 					$('#feedbackLogin').removeClass("d-none").html(response.message);
 					$('#feedbackLogin').css("color","red");

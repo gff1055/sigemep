@@ -158,18 +158,18 @@ $(function(){
 				success: function(answer){
 
 					// Se a resposta da operacao for uma falha,
-					// é verificado se o nome de usuario e o email informados
-					// estão sendo usados em outra conta
+					// é verificado qual tipo de erro ocorreu
 					console.log(answer);
 					if(!answer[0].success){
 						alert("Um ou mais campos possuem informações não válidas. Verifique")
 
-						/* O array de resposta é percorrido a fim de coletar todos os feedbacks
-						que há nele */
+						/* O array de resposta é percorrido a fim de coletar todos as mensagens de
+						feedback*/
 						for(var ind = 0; ind < answer.length; ind++){
 
 							/* Se o nome de usuario informado ja estiver sendo usado em outra conta,
-							os dados sao apagados e é enviado um alerta para o usuario */
+							os dados sao apagados no formulario e
+							é enviado um alerta para o usuario */
 							if(answer[ind].code == '55418313'){
 								idInputUserName = $('#idInputUserName');
 								idInputUserName.css("border-color","red");
@@ -187,11 +187,17 @@ $(function(){
 								feedbackEmail.html("  (ERRO: Já existe uma conta cadastrada com o Email informado. Digite outro)");
 							}
 
-							/* Outra falha... */
+							/* No caso de ocorrer outra falha... */
 							else{
 								console.log("FALHA GERAL....");
 							}
 						}
+					}
+
+					/* Se a resposta da operacao for sucesso, o usuario é redirecionado para a
+					view do usuario */
+					else{
+						window.location.href = "/user";
 					}
 				}
 			})

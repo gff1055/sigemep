@@ -112,7 +112,7 @@ class UsersController extends Controller{
     }
 
     public function index(){
-        echo ("EEEEEEEBBBAAA");
+        return view('user.index');
         /*$this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $users = $this->repository->all();
 

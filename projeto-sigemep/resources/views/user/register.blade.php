@@ -1,18 +1,19 @@
 @extends('templates.basic')
 @section('content')
 
-<section class="topMenuBar">
-	<div class="itemTopMenuBar"><span class="logo">KlinicK</span></div>
-	<div class="itemTopMenuBar"><a href="#">Seguranca</a></div>
-	<div class="itemTopMenuBar"><a href="#">Ajuda</a></div>
-	<div class="itemTopMenuBar"><a href="#">Contato</a></div>
-</section>
+	<section class="topMenuBar">
+		<div class="itemTopMenuBar"><span class="logo">KlinicK</span></div>
+		<div class="itemTopMenuBar"><a href="#">Seguranca</a></div>
+		<div class="itemTopMenuBar"><a href="#">Ajuda</a></div>
+		<div class="itemTopMenuBar"><a href="#">Contato</a></div>
+	</section>
+
 	<div class="divUserRegisterForm">
-	{!! Form::open([
-		//'route' => 'user.store',
-		'class' => 'formUserRegister'
-		])
-	!!}
+		{!! Form::open([
+			//'route' => 'user.store',
+			'class' => 'formUserRegister'
+			])
+		!!}
 
 	
 		<div class="formUserRegisterTitle">
