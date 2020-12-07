@@ -25,6 +25,8 @@ body{
 }
 
 
+/* CONFIGURACOES GERAIS DO MENU DA BARRA SUPERIOS */
+
 /* Menu do topo da pagina inicial */
 .topMenuBar{
 	background-color:  #009900;
@@ -73,6 +75,172 @@ body{
 }
 
 
+/* MENU SANDUICHE NO MENU DA BARRA SUPERIOR */
+
+/*O menu e as opcoes*/
+#menuToggle{
+	display: block;
+	position: relative;
+	/*top: 50px;*/
+	left: 8px;
+	z-index: 1;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+/* Configura o estilo das opcoes */
+#menuToggle a{
+	text-decoration: none;
+	color: #232323;
+	transition: color 0.3s ease;
+	padding: 0px;
+	
+}
+
+/* Opcoes quando passa o mouse em cima */
+#menuToggle a:hover{
+	color: #eeeeee;
+	
+}
+
+/* Estiliza o input check oculto */
+#menuToggle input{
+	display: block;
+	width: 40px;
+	height: 32px;
+	position: absolute;
+	top: -7px;
+	left: -5px;
+	
+	cursor: pointer;
+
+	opacity: 0; 
+	z-index: 2;
+
+	-webkit-touch-callout: none;
+	
+}
+
+/* Estiliza o icone do menu hamburguer */
+#menuToggle span{
+	display: block;
+	width: 33px;
+	height: 4px;
+	margin-bottom: 5px;
+	position: relative;
+
+	background: #cdcdcd;
+	border-radius: 3px;
+
+	z-index: 1;
+
+	transform-origin: 4px 0px;
+
+	transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+			  opacity 0.55s ease;
+			  
+}
+
+/* Configuracao da animação do icone do menu hamburguer */
+#menuToggle span:first-child{
+  transform-origin: 0% 0%;
+  
+}
+
+#menuToggle span:nth-last-child(2){
+  transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span{
+	opacity: 1;
+	transform: rotate(45deg) translate(-2px, -1px);
+	background: #232323;
+	
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3){
+	opacity: 0;
+	transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2){
+	transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*Area do menu*/
+#menu{
+	position: absolute;
+	width: 300px;
+	margin: -100px 0 0 -50px;
+	padding: 38px;
+	padding-right: 2px;
+	padding-top: 125px;
+	
+
+	background: #ededed;
+	list-style-type: none;
+	-webkit-font-smoothing: antialiased;
+	/* to stop flickering of text in safari */
+
+	transform-origin: 0% 0%;
+	transform: translate(-100%, 0);
+
+	transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+	box-shadow: 2px 4px 3px #888888 ;
+}
+
+#menu li{
+  padding: 10px 0;
+  padding-left: 16px;
+  font-size: 22px;
+}
+
+#menu li:hover{
+	background-color: #009900;
+}
+
+
+#menuToggle input:checked ~ ul{
+  transform: none;
+}
+
+
+/* Icone do menu sanduiche da barra superior */
+/*.topMenuBar .menuSandwich div div{
+	width: 24px;
+	height: 2px;
+	background-color: #eeeeee;
+	margin: 4px 0;
+}
+
+/* Rotulo "menu" no menu sanduiche da barra superior */
+/*.topMenuBar .menuSandwich div{
+	margin-right: 4px;
+}
+
+/* Menu sanduiche */
+/*.menuSandwich{
+	padding: 8px;
+	margin-left: 16px;
+	margin-right: 12px;
+	display: flex;
+}
+
+.subMenuSandwich{
+	/*display: none;*/
+/*	z-index: 1;
+}
+
+/* Menu sanduiche ao passar o mouse por cima */
+/*.menuSandwich:hover{
+	background-color: 006600;
+	border-radius: 8px;
+	transition: .2s;
+	cursor: pointer;
+}
+
+
 /* Area de escolha de tipo de acesso */
 
 .logo{
@@ -81,7 +249,7 @@ body{
 }
 
 
-/** Estilo geral dos formularios **/
+/** ESTILO GERAL DOS FORMULARIOS **/
 
 
 form{											
@@ -192,7 +360,10 @@ form input[disabled]:hover{
 }
 
 
+
 /*CONFIGURACOES DA PAGINA DE CADASTRO DE NOVOS USUARIO*/
+
+
 
 /* Estilo da div que contem o formulario de cadastro */
 .divUserRegisterForm form{
@@ -208,3 +379,8 @@ form input[disabled]:hover{
 	font-size: 0.8em;
 	font-style: italic;
 }
+
+
+/* CONFIGURACOES DA PAGINA INICIAL DO USUARIO */
+
+
