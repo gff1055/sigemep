@@ -22,11 +22,16 @@ class UsersController extends Controller{
     protected $repository;
     protected $service;
 
+
+
+
     public function __construct(UserRepository $repository, UserService $service){
         $this->repository = $repository;
         $this->service = $service;
         //$this->validator  = $validator;
     }
+
+
 
 
     /**
@@ -46,8 +51,12 @@ class UsersController extends Controller{
             'password' => $dadosLogin->get('password')
         ];
 
+
+
+
         // Efetuando login
         try{
+        
             // Se a criptografia de senha esta habilitada
             // é executado o metodo especifico
             if(env('SENHA_HASH')){
@@ -56,49 +65,65 @@ class UsersController extends Controller{
 
             // A criptografia de senha nao esta habilitada
             else{
+
                 $databaseData = DB::select('select * from users where username = ? or email = ?', [$dadosLogin->get('username'), $dadosLogin->get('username')]);
               
                 /* Se o usuario nao existe,
                 a operacao é sinalizada como false e é enviado mensagem para a view */
                 if(!$databaseData){
+
                     //throw new Exception("Email/Login invalido");
                     $loginFeedback['success'] = false;
                     $loginFeedback['message'] = "O Email/Login nao existe";
+                    
                     echo json_encode($loginFeedback);
                     return;
+                
                 }
 
                 /* Se o usuario existir, os dados do mesmo sao carregados */
                 else{
+
                     $user = new User();
                     $user->loadDataLogin($databaseData[0]);
 
                     /* Se a senha informada for diferente da cadastrada é enviado
                     o alerta para a view*/
                     if($user->password != $dadosLogin->get('password')){
+                    
                         $loginFeedback['success'] = false;
                         $loginFeedback['message'] = "Senha invalida";
+                    
                         echo json_encode($loginFeedback);
                         return;
+                    
                     }
+                
                 }
 
                 Auth::login($user);
             }
+
             //return redirect()->route('user.index');
             $loginFeedback['success'] = true;
+            
             echo json_encode($loginFeedback);
             return;
+        
         }
 
         /* Quando houver uma excecao, ela será mostrada na view */
         catch(Exception $e){
+        
             $loginFeedback['success'] = false;
             $loginFeedback['message'] = $e->getMessage();
+        
             echo json_encode($loginFeedback);
             return;
+        
             //return $e->getMessage();
         }
+    
     }
     
 
@@ -108,10 +133,13 @@ class UsersController extends Controller{
      * RETORNO:     view propriamente dita
      */
     public function register(){
-       return view('user.register');
+    
+        return view('user.register');
+    
     }
 
     public function index(){
+    
         return view('user.index');
         /*$this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $users = $this->repository->all();
@@ -124,7 +152,11 @@ class UsersController extends Controller{
         }
 
         return view('users.index', compact('users'));*/
+    
     }
+
+
+
 
     /**
      * FUNCAO:      store
@@ -132,22 +164,26 @@ class UsersController extends Controller{
      * ARGUMENTOS:  Dados do usuario
      * RETORNO:     Dados necessarios para avaliar se houve falha ou nao no cadastro
      */
-    public function store(UserCreateRequest $request)
-    {
+    public function store(UserCreateRequest $request){
         //dd($request->all());
         $request = $this->service->store($request->all());
 
         // O usuario sendo cadastrado com sucesso, ou nao,
         // os dados referentes são enviados para a view
         if($request[0]['success']){
+
             echo json_encode($request);
             return;
+
             //--->$user = $request['data'];
         }
+
         else{
+
             echo json_encode($request);
             return;
             //--->$user = null;
+
         }
 
         /*return view('user.index',[
@@ -163,8 +199,8 @@ class UsersController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
+
         $user = $this->repository->find($id);
 
         if (request()->wantsJson()) {
@@ -184,13 +220,16 @@ class UsersController extends Controller{
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
+
         $user = $this->repository->find($id);
 
         return view('users.edit', compact('user'));
     }
-
+    
+    
+    
+    
     /**
      * Update the specified resource in storage.
      *
@@ -201,8 +240,7 @@ class UsersController extends Controller{
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(UserUpdateRequest $request, $id)
-    {
+    public function update(UserUpdateRequest $request, $id){
         try {
 
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);

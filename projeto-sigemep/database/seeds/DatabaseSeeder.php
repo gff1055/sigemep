@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Entities\User;
+use App\Entities\Specialty;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,7 +12,7 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run(){
-        User::create([
+        /*User::create([
             'name' => 'Guilherme',
             'username' => 'gff105',
             'password' => env('SENHA_HASH')?bcrypt('souzag'):'souzag',
@@ -28,6 +29,19 @@ class DatabaseSeeder extends Seeder
             'cep' => '39401665',
             'estad' => 'Minas Gerais',
             'cidad' => 'Montes Claros',*/
+        /*]);*/
+
+        Specialty::create([
+            'name' => 'Oncologia',
         ]);
+
+        Specialty::create([
+            'name' => 'Clinica Medica',
+        ]);
+
+        Specialty::create([
+            'name' => 'Dermatologia',
+        ]);
+
     }
 }

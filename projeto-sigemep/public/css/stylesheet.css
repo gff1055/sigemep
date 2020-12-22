@@ -175,7 +175,8 @@ body{
 	margin: -100px 0 0 -50px;
 	padding: 38px;
 	padding-right: 2px;
-	padding-top: 125px;
+	padding-top: 100px;
+	padding-bottom: 8px;
 	
 
 	background: #ededed;
@@ -193,7 +194,7 @@ body{
 #menu li{
   padding: 10px 0;
   padding-left: 16px;
-  font-size: 22px;
+  font-size: 16px;
 }
 
 #menu li:hover{
@@ -382,5 +383,9 @@ form input[disabled]:hover{
 
 
 /* CONFIGURACOES DA PAGINA INICIAL DO USUARIO */
+
+.iconMenuToggle{
+	margin-right: 1em;
+}
 
 

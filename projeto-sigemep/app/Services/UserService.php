@@ -9,6 +9,7 @@ use Prettus\Validator\Contracts\ValidatorInterface;
 use Illuminate\Support\Facades\DB;
 
 class UserService{
+
 	private $repository;
 	private $validator;
 
@@ -16,6 +17,7 @@ class UserService{
 		$this->repository = $paramRepos;
 		$this->validator = $paramValid;
 	}
+
 
 
 
@@ -29,7 +31,9 @@ class UserService{
 	 * 					'message' 	-> Mensagem que explica o erro
 	 * 					'data' 		-> os dados enviados
 	 */
-	public function store($data){
+	
+	 public function store($data){
+	
 		try{
 			
 			$this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
@@ -43,12 +47,14 @@ class UserService{
 			// Se já existir um usuario cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($userExist){
+				
 				$arrayDataFeedback[] = [
 					'success' => false,
 					'code' => '55418313',
 					'message' => 'Já exite uma conta com esse nome de usuario',
 					'data' => null
 				];
+	
 			}
 
 			// Variavel recebe o feedback da existencia(ou nao) do email informado
@@ -57,37 +63,46 @@ class UserService{
 			// Se já existir um email cadastrado com os dados fornecidos
 			// o array indicando falha é enviado para a view
 			if($emailExist){
+				
 				$arrayDataFeedback[] = [
 					'success' => false,
 					'code' => '341313',
 					'message' => 'Já exite uma conta associada com esse email',
 					'data' => null
 				];
+	
 			}
 
 			/* Se não existir nenhum nome de usuario/email cadastrado com os dados fornecidos
 			o array indicando sucesso é enviado para a view */
 			if(!$userExist && !$emailExist){
+	
 				$user = $this->repository->create($data);
+		
 				$arrayDataFeedback[] = [
 					'success' => true,
 					'code' => '538',
 					'message' => 'Usuario Cadastrado',
 					'data' => $user
 				];
+
 			}
 
 			return $arrayDataFeedback;
+	
 		}
 
 		// Em caso de excecao, o array indicando excecao é enviado para a view
 		catch(Exception $except){
+			
 			return[
 				'success' => 'false',
 				'message' => 'Erro interno',
 				'data' => null
 			];
+	
 		}
+	
 	}
 
 	public function update(){

@@ -1,14 +1,4 @@
-@php
-	$title = 'Home';
-@endphp
-
-@extends('templates.basic')
-
-@section('content')
-
-	@extends('templates.topMenuBar')
-
-<!--<section class="topMenuBar">
+<section class="topMenuBar">
 	
 	<div class="itemTopMenuBar">
 		<div id="menuToggle">
@@ -55,16 +45,10 @@
 			</ul>
 		</div>-->
 	
-	<!--<div class="itemTopMenuBar"><span class="logo">KlinicK</span></div>
+	<div class="itemTopMenuBar"><span class="logo">KlinicK</span></div>
 	<div class="itemTopMenuBar"><a href="#">Seguranca</a></div>
 	<div class="itemTopMenuBar"><a href="#">Ajuda</a></div>
 	<div class="itemTopMenuBar"><a href="#">Contato</a></div>
 
-	<script src="{{asset('js/topMenuBar.js')}}"></script>-->
-
+	<script src="{{asset('js/topMenuBar.js')}}"></script>
 </section>
-
-
-
-	
-@endsection

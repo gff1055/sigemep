@@ -1,3 +1,8 @@
+
+@php
+	$title = 'Klinick - entre ou cadastre-se';
+@endphp
+
 @extends('templates.basic')
 
 @section('content')

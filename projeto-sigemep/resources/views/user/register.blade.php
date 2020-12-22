@@ -1,4 +1,12 @@
+@php
+	$title = 'Cadastro';
+@endphp
+
+
+
 @extends('templates.basic')
+
+
 @section('content')
 
 	<section class="topMenuBar">
@@ -22,6 +30,7 @@
 			Crie sua conta e faça consultas com medicos on-line de varias especialidades
 			<br>
 		</div>
+		
 		<br>
 		<span class="requiredFieldLabel">*Campo obrigatorio</span>
 		{!! Form::text('name', null, [
@@ -29,9 +38,11 @@
 			'placeholder' => 'Nome'
 		]) !!}
 
+
 		<br><br>
 		<span class="requiredFieldLabel" id="idLabelUserName">*Campo obrigatorio </span>
 		<span class="requiredFieldLabel" id="feedbackUserName"></span>
+		
 		{!! Form::text('username', null, [
 			'class' => 'atrForm requiredField',
 			'placeholder' => 'Usuario',
